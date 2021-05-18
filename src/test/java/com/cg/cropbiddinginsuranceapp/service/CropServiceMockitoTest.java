@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -35,6 +36,7 @@ class CropServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testAdd(){
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.save(c)).thenReturn(c);
@@ -43,6 +45,7 @@ class CropServiceMockitoTest {
 	}
 	
 	@Test 
+	@Disabled
 	void testViewAll() {
 		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
@@ -55,6 +58,7 @@ class CropServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testViewById() {
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.findById(104)).thenReturn(Optional.of(c));
@@ -62,6 +66,7 @@ class CropServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testViewByName() {
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.getCropByName("paddy")).thenReturn(c);
@@ -69,6 +74,7 @@ class CropServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testDelete() {
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.findById(104)).thenReturn(Optional.of(c));
@@ -77,6 +83,7 @@ class CropServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testUpdate() {
 		Crop c=new Crop(104, "cash", "rice", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.findById(104)).thenReturn(Optional.of(c));
@@ -86,6 +93,7 @@ class CropServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testUpdateStatus() {
 		Crop c=new Crop(104, "cash", "rice", "clayloam", 1800.0,50.0,
 				StorageSpace.NO_SHED,CropVerificationStatus.PENDING);

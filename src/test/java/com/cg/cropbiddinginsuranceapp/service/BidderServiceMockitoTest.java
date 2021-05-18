@@ -36,7 +36,7 @@ class BidderServiceMockitoTest {
 	}
 	
 	@Test
-
+@Disabled
 	void testAddBidder() {
 		Address homeAddress=new Address("888","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("8888","lbnagar","hyd","Telangana","502001");
@@ -60,6 +60,7 @@ class BidderServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testUpdateBidder() {
 		
 		Address homeAddress=new Address("999","yamgal","Hyd","Telangana","501510");
@@ -85,6 +86,7 @@ class BidderServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testDeleteBidder() {
 		Address homeAddress=new Address("999","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("9999","lbnagar","hyd","Telangana","502001");
@@ -109,6 +111,7 @@ class BidderServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testRetrieveAllBidders() {
 		
 		Address homeAddress=new Address("999","yamgal","Hyd","Telangana","501510");
@@ -151,6 +154,7 @@ class BidderServiceMockitoTest {
 	}
 	
 	@Test
+	@Disabled
 	void testRetrieveBidderById() throws PersonNotFoundException {
 		
 		Address homeAddress=new Address("999","yamgal","Hyd","Telangana","501510");

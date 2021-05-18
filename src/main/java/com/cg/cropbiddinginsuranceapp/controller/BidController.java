@@ -4,6 +4,8 @@ package com.cg.cropbiddinginsuranceapp.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,7 +65,7 @@ public class BidController {
 		}
 
 		@PostMapping("/bid")
-		public Bid addBid(@RequestBody Bid bid) {
+		public Bid addBid(@Valid @RequestBody Bid bid) {
 			return bidService.save(bid);
 		}
 
