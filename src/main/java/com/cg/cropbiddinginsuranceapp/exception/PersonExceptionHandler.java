@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.cg.cropbiddinginsuranceapp.entity.PersonErrorResponse;
+import com.cg.cropbiddinginsuranceapp.entity.ErrorResponse;
 
 
 
@@ -13,9 +13,9 @@ import com.cg.cropbiddinginsuranceapp.entity.PersonErrorResponse;
 public class PersonExceptionHandler {
 
 	@ExceptionHandler
-	public ResponseEntity<PersonErrorResponse> handleException(PersonNotFoundException b)
+	public ResponseEntity<ErrorResponse> handleException(PersonNotFoundException b)
 	{
-		PersonErrorResponse error=new PersonErrorResponse();
+		ErrorResponse error=new ErrorResponse();
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(b.getMessage());
 		error.setTimeStamp(System.currentTimeMillis());
@@ -23,9 +23,9 @@ public class PersonExceptionHandler {
 	}
 	
 	@ExceptionHandler
-	public ResponseEntity<PersonErrorResponse> handleException(Exception b)
+	public ResponseEntity<ErrorResponse> handleException(Exception b)
 	{
-		PersonErrorResponse error=new PersonErrorResponse();
+		ErrorResponse error=new ErrorResponse();
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage("Bad Request");
 		error.setTimeStamp(System.currentTimeMillis());

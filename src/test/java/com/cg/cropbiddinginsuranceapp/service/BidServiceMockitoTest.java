@@ -39,7 +39,7 @@ class BidServiceMockitoTest {
 	@Test
 	
 	void testCreateBid() {
-Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
+Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","213345232111","LLM121");
 		
 		Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
 		Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
@@ -64,7 +64,7 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 	}
 	@Test
 	void testFindByBidId() {
-		 Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
+		 Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","213345232111","LLM121");
 			
 			Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
 			Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
@@ -90,7 +90,7 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 	@Test
 	
 	void testDeleteBid() {
-	Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","2133 4523 2111","LLM121");
+	Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","213345232111","LLM121");
 		
 		Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
 		Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
@@ -119,7 +119,7 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 	
 	void testUpdateBid() {
 		
-		 Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","2133 4523 2111","LLM121");
+		 Farmer farmer = new Farmer("Preeti","6703323213","preeti11@gmail.com","213345232111","LLM121");
 			
 			Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
 			Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");
@@ -149,7 +149,7 @@ Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2
 	@Test
 	
 	void testRetrieveBid() {
-		 Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","2133 4523 2111","LLM121");
+		 Farmer farmer = new Farmer("Preeti","6703323213","preeti@gmail.com","213345232111","LLM121");
 			
 			Address homeAddress=new Address("103","G-Nagar","Noida","Delhi","760007");
 			Address farmAddress=new Address("203","H-Nagar","Noida","Delhi","760008");

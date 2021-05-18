@@ -25,16 +25,17 @@ class FarmerServiceTest {
 	@Test
 	@Disabled
 	void testAddFarmer() {
-		Farmer farmer = new Farmer("Naira Goenka", "6703321453", "naira@gmail.com", "213312332111", "ABC121");
 
-		Address homeAddress = new Address("101", "A-Nagar", "Noida", "Delhi", "760001");
-		Address farmAddress = new Address("201", "B-Nagar", "Noida", "Delhi", "760002");
-		Address bankAddress = new Address("301", "C-Nagar", "Noida", "Delhi", "760003");
+		Farmer farmer = new Farmer("Kirti Goenka", "9203321453", "kirti@gmail.com", "986512332111", "GHI332");
 
-		Bank bank = new Bank(401, "ICICI Bank", "1AB21");
+		Address homeAddress = new Address("103", "D-Nagar", "Banglore", "Karnataka", "760007");
+		Address farmAddress = new Address("203", "H-Nagar", "Banglore", "Karnataka", "760008");
+		Address bankAddress = new Address("303", "I-Nagar", "Banglore", "Karnataka", "760009");
+
+		Bank bank = new Bank(403, "HDFC Bank", "65MN21");
 		bank.setAddress(bankAddress);
 
-		Account account = new Account(1865441232);
+		Account account = new Account(1266542366);
 		account.setBank(bank);
 
 		farmer.setHomeAddress(homeAddress);
@@ -43,12 +44,12 @@ class FarmerServiceTest {
 
 		Farmer persistedFarmer = farmerService.addFarmer(farmer);
 
-		assertAll(() -> assertEquals("Naira Goenka", persistedFarmer.getName()),
-				() -> assertEquals("6703321453", persistedFarmer.getContactNumber()),
-				() -> assertEquals("naira@gmail.com", persistedFarmer.getEmailId()),
-				() -> assertEquals("213312332111", persistedFarmer.getAadharNumber()),
-				() -> assertEquals("ABC121", persistedFarmer.getPanNumber()),
-				() -> assertEquals(1865441232, persistedFarmer.getBankDetails().getAccountId()));
+		assertAll(() -> assertEquals("Kirti Goenka", persistedFarmer.getName()),
+				() -> assertEquals("9203321453", persistedFarmer.getContactNumber()),
+				() -> assertEquals("kirti@gmail.com", persistedFarmer.getEmailId()),
+				() -> assertEquals("986512332111", persistedFarmer.getAadharNumber()),
+				() -> assertEquals("GHI332", persistedFarmer.getPanNumber()),
+				() -> assertEquals(1266542366, persistedFarmer.getBankDetails().getAccountId()));
 
 	}
 
@@ -58,7 +59,7 @@ class FarmerServiceTest {
 	@Disabled
 	void testRetrieveAllFarmers() {
 		List<Farmer> farmers = farmerService.retrieveAllFarmers();
-		assertEquals(1, farmers.size());
+		assertEquals(2, farmers.size());
 	}
 
 	// test for retrieving farmer by id
@@ -66,8 +67,8 @@ class FarmerServiceTest {
 	@Test
 	@Disabled
 	void testRetrieveFarmerById() {
-		Farmer farmer = farmerService.retrieveFarmerById(2);
-		assertEquals("Naira Goenka", farmer.getName());
+		Farmer farmer = farmerService.retrieveFarmerById(1);
+		assertEquals("naira@gmail.com", farmer.getEmailId());
 		assertEquals("101", farmer.getHomeAddress().getHouseno());
 	}
 
@@ -98,7 +99,7 @@ class FarmerServiceTest {
 		farmer.setBankDetails(account);
 		;
 
-		Farmer updatedFarmer = farmerService.updateFarmer(2, farmer);
+		Farmer updatedFarmer = farmerService.updateFarmer(1, farmer);
 		System.out.println(updatedFarmer);
 		assertAll(() -> assertEquals("ABC121", updatedFarmer.getPanNumber()),
 				() -> assertEquals("A-Nagar", updatedFarmer.getHomeAddress().getStreet()));
@@ -110,8 +111,8 @@ class FarmerServiceTest {
 	@Test
 	@Disabled
 	void testDeleteFarmerById() {
-		Farmer farmer = farmerService.deleteFarmerById(1);
-		assertEquals(1, farmer.getUserId());
+		Farmer farmer = farmerService.deleteFarmerById(2);
+		assertEquals(2, farmer.getUserId());
 	}
 
 }

@@ -40,7 +40,7 @@ IBidService bidService;
 		Account account=new Account(1673211231);
 		account.setBank(bank);
 		
-		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","1459 8900 7863","DEF332");
+		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","145989007863","DEF332");
 		
 		farmer.setHomeAddress(homeAddress);
 		farmer.setFarmAddress(farmAddress);
@@ -81,7 +81,7 @@ IBidService bidService;
 		Account account=new Account(1673211231);
 		account.setBank(bank);
 		
-		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","1459 8900 7863","DEF332");
+		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","145989007863","DEF332");
 		
 		farmer.setHomeAddress(homeAddress);
 		farmer.setFarmAddress(farmAddress);

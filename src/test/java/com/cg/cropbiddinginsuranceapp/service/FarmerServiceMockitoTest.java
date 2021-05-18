@@ -41,7 +41,7 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testAddFarmer() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLM121");
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "213345232111", "LLM121");
 
 		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
 		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
@@ -61,7 +61,7 @@ class FarmerServiceMockitoTest {
 
 		Farmer persistedFarmer = farmerService.addFarmer(farmer);
 
-		assertEquals("1CD21", persistedFarmer.getBankDetails().getBank().getIFSCCode());
+		assertEquals("1CD21", persistedFarmer.getBankDetails().getBank().getIfscCode());
 		assertEquals("Preeti", persistedFarmer.getName());
 
 	}
@@ -70,7 +70,7 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testRetrieveAllFarmers() {
-		Farmer farmer1 = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLM121");
+		Farmer farmer1 = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "213345232111", "LLM121");
 
 		Address homeAddress1 = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
 		Address farmAddress1 = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
@@ -101,7 +101,7 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testRetrieveFarmerById() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLM121");
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "213345232111", "LLM121");
 
 		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
 		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
@@ -129,7 +129,7 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testUpdateFarmer() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "2133 4523 2111", "LLM121");
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "213345232111", "LLM121");
 
 		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
 		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
@@ -159,7 +159,7 @@ class FarmerServiceMockitoTest {
 	@Test
 	void testDeleteFarmerById() {
 
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "2133 4523 2111", "LLM121");
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "213345232111", "LLM121");
 
 		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
 		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");

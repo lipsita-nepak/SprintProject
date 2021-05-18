@@ -10,7 +10,7 @@ import com.cg.cropbiddinginsuranceapp.entity.Bid;
 public interface IBidService {
 
 	Bid findByBidId(int id);
-     List<Bid> findAll();
+    List<Bid> findAll();
  	Bid update(Bid bid);
  	Bid save( Bid bid);
     Bid deleteByBidId(int id);

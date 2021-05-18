@@ -85,7 +85,6 @@ class BiddingServiceTest {
 	}
 	
 	@Test
-	
 	@Disabled
 	void testViewAllById(){
 		Bidding bid=bs.findById(5);

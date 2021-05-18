@@ -40,9 +40,13 @@ public class BidderServiceImpl implements IBidderService {
 
 	@Override
 	public Bidder deleteBidder(int id) {
-		Bidder bid =bidRepo.findById(id).get();
+		Optional<Bidder> opt=bidRepo.findById(id);
+		if(!opt.isPresent())
+		{
+			return null;
+		}
 		bidRepo.deleteById(id);
-		return bid;
+		return opt.get();
 	}
 
 	@Override

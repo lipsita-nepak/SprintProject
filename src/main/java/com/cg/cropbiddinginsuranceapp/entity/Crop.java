@@ -16,7 +16,7 @@ public class Crop {
 	private double quantity;
 	
 	@Enumerated(EnumType.STRING)
-	private StorageSpace StorageSpace;
+	private StorageSpace storageSpace;
 	@Enumerated(EnumType.STRING)
 	private CropVerificationStatus cvStatus;
 	
@@ -40,7 +40,7 @@ public class Crop {
 		this.soilType = soilType;
 		this.basePricePerQuintal = basePricePerQuintal;
 		this.quantity = quantity;
-		this.StorageSpace = storageSpace;
+		this.storageSpace = storageSpace;
 		this.cvStatus = cvStatus;
 	}
 	public int getCropId() {
@@ -80,10 +80,10 @@ public class Crop {
 		this.quantity = quantity;
 	}
 	public StorageSpace getStorageSpace() {
-		return StorageSpace;
+		return storageSpace;
 	}
 	public void setStorageSpace(StorageSpace storageSpace) {
-		StorageSpace = storageSpace;
+		storageSpace = storageSpace;
 	}
 	public CropVerificationStatus getCvStatus() {
 		return cvStatus;
@@ -96,6 +96,6 @@ public class Crop {
 	public String toString() {
 		return "Crop [cropId=" + cropId + ", cropType=" + cropType + ", cropName=" + cropName + ", soilType=" + soilType
 				+ ", basePricePerQuintal=" + basePricePerQuintal + ", quantity=" + quantity + ", StorageSpace="
-				+ StorageSpace + ", cvStatus=" + cvStatus + "]";
+				+ storageSpace + ", cvStatus=" + cvStatus + "]";
 	}
 }

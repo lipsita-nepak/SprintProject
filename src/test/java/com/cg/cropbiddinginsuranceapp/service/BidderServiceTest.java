@@ -73,6 +73,7 @@ class BidderServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	void testRetrieveAllBidders() {
 		List<Bidder> bidder = bidService.retrieveAllBidders();
 		int size=bidder.size();
@@ -81,6 +82,7 @@ class BidderServiceTest {
 	}
 	
 	@Test
+	@Disabled
 	void testRetrieveBidderById() throws PersonNotFoundException {
 		Bidder bidder = bidService.retrieveBidderById(3);
 		assertEquals("Pranil",bidder.getName());

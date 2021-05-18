@@ -1,7 +1,6 @@
 package com.cg.cropbiddinginsuranceapp.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
