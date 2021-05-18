@@ -14,7 +14,7 @@ public class BidServiceImpl implements IBidService {
 
 	@Autowired
 	IBidRepository bidRepo;
-	
+
 	@Override
 	public Bid findByBidId(int id) {
 		Optional<Bid> opt = bidRepo.findById(id);
@@ -23,8 +23,7 @@ public class BidServiceImpl implements IBidService {
 		}
 		return opt.get();
 	}
-	
-		
+
 	@Override
 	public List<Bid> findAll() {
 		return bidRepo.findAll();
@@ -33,7 +32,7 @@ public class BidServiceImpl implements IBidService {
 	@Override
 	public Bid deleteByBidId(int id) {
 		Optional<Bid> opt = bidRepo.findById(id);
-		if(!opt.isPresent()) {
+		if (!opt.isPresent()) {
 			return null;
 		}
 		return opt.get();
@@ -42,7 +41,7 @@ public class BidServiceImpl implements IBidService {
 	@Override
 	public Bid update(Bid bid) {
 		Bid bid1 = bidRepo.findById(bid.getBidId()).get();
-	
+
 		bid1.setBidId(bid.getBidId());
 		bid1.setDateOfBidding(bid.getDateOfBidding());
 		bid1.setCrop(bid.getCrop());

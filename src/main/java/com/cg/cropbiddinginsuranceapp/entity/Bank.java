@@ -24,7 +24,6 @@ import lombok.ToString;
 public class Bank {
 
 	// Fields
-
 	@Id
 	@NonNull
 	private long bankId;

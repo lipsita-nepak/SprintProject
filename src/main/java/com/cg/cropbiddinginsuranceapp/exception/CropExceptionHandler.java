@@ -9,14 +9,14 @@ import com.cg.cropbiddinginsuranceapp.entity.ErrorResponse;
 
 @ControllerAdvice
 public class CropExceptionHandler {
-	
+
 	@ExceptionHandler
-	public ResponseEntity<ErrorResponse> handleException(CropNotFoundException e){
-		ErrorResponse error=new ErrorResponse();
+	public ResponseEntity<ErrorResponse> handleException(CropNotFoundException e) {
+		ErrorResponse error = new ErrorResponse();
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(e.getMessage());
 		error.setTimeStamp(System.currentTimeMillis());
-		return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
 }

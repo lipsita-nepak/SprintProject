@@ -1,8 +1,8 @@
 package com.cg.cropbiddinginsuranceapp.controller;
 
-
-
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,41 +19,39 @@ import com.cg.cropbiddinginsuranceapp.service.IBidService;
 
 @RestController
 public class BidController {
-	
-		
-		@Autowired
-		IBidService bidService;
-		
-		@GetMapping("/bid/{id}")
-		public Bid findById(@PathVariable("id") int bidId) {
-				if(bidService.findByBidId(bidId)==null) {
-					throw new BidNotFoundException("Bid not found with given id: "+bidId );
-				}
-			
-					return bidService.findByBidId(bidId);
+
+	@Autowired
+	IBidService bidService;
+
+	@GetMapping("/bid/{id}")
+	public Bid findById(@PathVariable("id") int bidId) {
+		if (bidService.findByBidId(bidId) == null) {
+			throw new BidNotFoundException("Bid not found with given id: " + bidId);
 		}
 
-		
-		// To get either single user or all the users
-		@GetMapping("/bid")
-		public List<Bid> findAll(){
-			return bidService.findAll();
-		}
+		return bidService.findByBidId(bidId);
+	}
 
-		@DeleteMapping("/bid/{id}")
-		public Bid deleteById(@PathVariable("id") int bidId) {
-			return bidService.deleteByBidId(bidId);
-		}
+	// To get either single user or all the users
+	@GetMapping("/bid")
+	public List<Bid> findAll() {
+		return bidService.findAll();
+	}
 
-		@PostMapping("/bid")
-		public Bid addBid(@RequestBody Bid bid) {
-			return bidService.save(bid);
-		}
+	@DeleteMapping("/bid/{id}")
+	public Bid deleteById(@PathVariable("id") int bidId) {
+		return bidService.deleteByBidId(bidId);
+	}
 
-		// Updating all the values
-		@PutMapping("/bid/{id}")
-		public Bid putBid(@PathVariable("id") int bidId,Bid bid) {
-			return bidService.update(bid);
-		}
+	@PostMapping("/bid")
+	public Bid addBid(@RequestBody Bid bid) {
+		return bidService.save(bid);
+	}
+
+	// Updating all the values
+	@PutMapping("/bid/{id}")
+	public Bid putBid(@PathVariable("id") int bidId,@Valid @RequestBody Bid bid) {
+		return bidService.update(bid);
+	}
 
 }

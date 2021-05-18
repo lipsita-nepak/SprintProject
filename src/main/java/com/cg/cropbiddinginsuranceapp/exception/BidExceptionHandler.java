@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.cg.cropbiddinginsuranceapp.entity.ErrorResponse;
 
-
-
 @ControllerAdvice
 public class BidExceptionHandler {
 

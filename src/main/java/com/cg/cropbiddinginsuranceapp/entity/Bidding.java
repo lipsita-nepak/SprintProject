@@ -11,6 +11,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Bidding {
+	
 	@Id
 	private int biddingId;
 	private double bidPerQuintal;

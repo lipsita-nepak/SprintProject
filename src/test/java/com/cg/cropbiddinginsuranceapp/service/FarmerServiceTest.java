@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +22,6 @@ class FarmerServiceTest {
 	// test for add farmer
 
 	@Test
-	@Disabled
 	void testAddFarmer() {
 
 		Farmer farmer = new Farmer("Kirti Goenka", "9203321453", "kirti@gmail.com", "986512332111", "GHI332");
@@ -56,7 +54,6 @@ class FarmerServiceTest {
 	// test for retrieving all farmers from database
 
 	@Test
-	@Disabled
 	void testRetrieveAllFarmers() {
 		List<Farmer> farmers = farmerService.retrieveAllFarmers();
 		assertEquals(2, farmers.size());
@@ -65,7 +62,6 @@ class FarmerServiceTest {
 	// test for retrieving farmer by id
 
 	@Test
-	@Disabled
 	void testRetrieveFarmerById() {
 		Farmer farmer = farmerService.retrieveFarmerById(1);
 		assertEquals("naira@gmail.com", farmer.getEmailId());
@@ -75,7 +71,6 @@ class FarmerServiceTest {
 	// test for updating farmer details
 
 	@Test
-	@Disabled
 	void testUpdateFarmer() {
 		Farmer farmer = new Farmer();
 
@@ -109,7 +104,6 @@ class FarmerServiceTest {
 	// test for deleting farmer by id
 
 	@Test
-	@Disabled
 	void testDeleteFarmerById() {
 		Farmer farmer = farmerService.deleteFarmerById(2);
 		assertEquals(2, farmer.getUserId());

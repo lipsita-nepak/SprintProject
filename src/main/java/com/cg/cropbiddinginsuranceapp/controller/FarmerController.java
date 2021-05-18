@@ -35,7 +35,7 @@ public class FarmerController {
 	@GetMapping("/farmer/{id}")
 	public Farmer retrieveFarmerById(@PathVariable("id") int userId) {
 		if (farmerService.retrieveFarmerById(userId) == null) { // If farmer of given userId is not there then it throws
-																// an Exception
+			// an Exception
 			throw new FarmerNotFoundException("Farmer not found with given id: " + userId);
 		}
 		return farmerService.retrieveFarmerById(userId);
@@ -53,7 +53,7 @@ public class FarmerController {
 
 	// Updating Farmer Information based on userId and data given
 	@PutMapping("/farmer/{id}")
-	public Farmer updateFarmer(@PathVariable("id") int id,@Valid @RequestBody Farmer farmer) {
+	public Farmer updateFarmer(@PathVariable("id") int id, @Valid @RequestBody Farmer farmer) {
 		return farmerService.updateFarmer(id, farmer);
 	}
 

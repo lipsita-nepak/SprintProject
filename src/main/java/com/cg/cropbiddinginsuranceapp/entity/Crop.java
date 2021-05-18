@@ -7,6 +7,7 @@ import javax.persistence.Enumerated;
 
 @Entity
 public class Crop {
+
 	@Id
 	private int cropId;
 	private String cropType;
