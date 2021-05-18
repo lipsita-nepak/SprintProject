@@ -1,43 +1,21 @@
 package com.cg.cropbiddinginsuranceapp.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class PersonErrorResponse {
+
+	// Fields
 	private int status;
 	private String message;
 	private long timeStamp;
-	
-	public PersonErrorResponse() {}
-	
-	public PersonErrorResponse(int status, String message, long timeStamp) {
-		super();
-		this.status = status;
-		this.message = message;
-		this.timeStamp = timeStamp;
-	}
 
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public long getTimeStamp() {
-		return timeStamp;
-	}
-
-	public void setTimeStamp(long l) {
-		this.timeStamp = l;
-	}
-	
-	
 }
-

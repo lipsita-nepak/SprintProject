@@ -17,12 +17,15 @@ public class BidderServiceImpl implements IBidderService {
 	@Autowired
 	IBidderRepository bidRepo;
 	
+	//adding bidder into database
+	
 	@Override
 	public Bidder addBidder(Bidder bidder) {
 		
 		return bidRepo.save(bidder);
 	}
 
+	//updating bidder in database
 	@Override
 	public Bidder updateBidder(Bidder bidder) {
 		Bidder bid=bidRepo.findById(bidder.getUserId()).get();
@@ -38,6 +41,8 @@ public class BidderServiceImpl implements IBidderService {
 		return bidRepo.save(bid);
 	}
 
+	//deleting bidder from database
+	
 	@Override
 	public Bidder deleteBidder(int id) {
 		Bidder bid =bidRepo.findById(id).get();
@@ -45,12 +50,14 @@ public class BidderServiceImpl implements IBidderService {
 		return bid;
 	}
 
+	//retrieving all bidders from database
 	@Override
 	public List<Bidder> retrieveAllBidders() {
 		
 		return bidRepo.findAll();
 	}
 
+	//retrieving bidder using userId from database
 	@Override
 	public Bidder retrieveBidderById(int id) {
 		
