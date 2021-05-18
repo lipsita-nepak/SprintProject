@@ -26,7 +26,7 @@ class BidServiceTest {
 IBidService bidService;
 
 	@Test
-	@Disabled
+@Disabled
 	void testSaveBid() {
 		Bid bid = new Bid();
 		bid.setBidId(1001);
@@ -40,7 +40,7 @@ IBidService bidService;
 		Account account=new Account(1673211231);
 		account.setBank(bank);
 		
-		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","1459 8900 7863","DEF332");
+		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","145989007863","DEF332");
 		
 		farmer.setHomeAddress(homeAddress);
 		farmer.setFarmAddress(farmAddress);
@@ -58,7 +58,7 @@ IBidService bidService;
 	}
 	
 	@Test
-	@Disabled
+@Disabled
 	void testDeleteBid() {
 		Bid bid = bidService.deleteByBidId(1001);
 		assertEquals(1001,bid.getBidId());
@@ -66,7 +66,7 @@ IBidService bidService;
 }
 	
 	@Test
-	@Disabled
+	
 	void testUpdateBid() {
 		Bid bid = new Bid();
 		bid.setBidId(20);
@@ -81,7 +81,7 @@ IBidService bidService;
 		Account account=new Account(1673211231);
 		account.setBank(bank);
 		
-		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","1459 8900 7863","DEF332");
+		Farmer farmer=new Farmer("Akshara Singhania","9861778566","akshara@gmail.com","145989007863","DEF332");
 		
 		farmer.setHomeAddress(homeAddress);
 		farmer.setFarmAddress(farmAddress);
@@ -103,15 +103,14 @@ IBidService bidService;
 	void testRetrieveBid() {
 		List<Bid> bid = bidService.findAll();
 		
-		assertEquals(2,bid.size());
+		assertEquals(1,bid.size());
 	}
 	
 	@Test
-	@Disabled
+	
 	void testRetrieveBidById() {
-		Bid bid = bidService.findByBidId(20);
-		
-		assertEquals(20,bid.getBidId());
+		Bid bid = bidService.findByBidId(1001);
+		assertEquals(1001,bid.getBidId());
 		}
 		
 }
