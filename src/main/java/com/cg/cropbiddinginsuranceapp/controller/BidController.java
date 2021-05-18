@@ -28,7 +28,6 @@ public class BidController {
 		if (bidService.findByBidId(bidId) == null) {
 			throw new BidNotFoundException("Bid not found with given id: " + bidId);
 		}
-
 		return bidService.findByBidId(bidId);
 	}
 
@@ -43,15 +42,15 @@ public class BidController {
 		return bidService.deleteByBidId(bidId);
 	}
 
-	@PostMapping("/bid")
-	public Bid addBid(@RequestBody Bid bid) {
-		return bidService.save(bid);
-	}
-
 	// Updating all the values
 	@PutMapping("/bid/{id}")
 	public Bid putBid(@PathVariable("id") int bidId,@Valid @RequestBody Bid bid) {
 		return bidService.update(bid);
 	}
+
+		@PostMapping("/bid")
+		public Bid addBid(@Valid @RequestBody Bid bid) {
+			return bidService.save(bid);
+		}
 
 }

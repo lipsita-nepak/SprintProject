@@ -16,20 +16,21 @@ class BidderServiceTest {
 	@Autowired
 	IBidderService bidService;
 	
+	//test to add bidder
 	@Test
-	@Disabled
+	
 	void testAddBidder() {
 		
 		
-		Address homeAddress=new Address("888","yamgal","Hyd","Telangana","501510");
-		Address bankAddress=new Address("8888","lbnagar","hyd","Telangana","502001");
+		Address homeAddress=new Address("6757","yamgal","Hyd","Telangana","501510");
+		Address bankAddress=new Address("9867","lbnagar","hyd","Telangana","502001");
 		
-		Bank bank=new Bank(1,"ICICI","123abc");
+		Bank bank=new Bank(9,"ICICI","123abc");
 		bank.setAddress(bankAddress);
 		
-		Account bankDetails=new Account(99);
+		Account bankDetails=new Account(879);
 		bankDetails.setBank(bank);
-		Bidder bidder=new Bidder("abc","sam","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","sam","1234567890","abc@gmail.com","123456789012","xyz");
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
 		
@@ -40,22 +41,23 @@ class BidderServiceTest {
 		
 	}
 	
+	//test to update bidder
 	@Test
 	@Disabled
 	void testUpdateBidder() {
 		
 		
-		Address homeAddress=new Address("999","yamgal","Hyd","Telangana","501510");
-		Address bankAddress=new Address("9999","lbnagar","hyd","Telangana","502001");
+		Address homeAddress=new Address("6590","yamgal","Hyd","Telangana","501510");
+		Address bankAddress=new Address("1145","lbnagar","hyd","Telangana","502001");
 		
-		Bank bank=new Bank(2,"ICICI","123abc");
+		Bank bank=new Bank(44,"ICICI","123abc");
 		bank.setAddress(bankAddress);
 		
-		Account bankDetails=new Account(999);
+		Account bankDetails=new Account(1006);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
-		bidder.setUserId(1);
+		Bidder bidder=new Bidder("abc","Pranil","1234554321","abc@gmail.com","123455432112","xyz");
+		bidder.setUserId(4);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
 		
@@ -64,14 +66,15 @@ class BidderServiceTest {
 		assertEquals("Pranil", updated.getName());
 	}
 	
+	//test to delete bidder
 	@Test
-	@Disabled
 	void testDeleteBidder() {
 		Bidder bidder = bidService.deleteBidder(4);
 		assertEquals(4, bidder.getUserId());
 		
 	}
 	
+	//test to get all bidders
 	@Test
 	@Disabled
 	void testRetrieveAllBidders() {
@@ -81,6 +84,7 @@ class BidderServiceTest {
 		
 	}
 	
+	//test to get bidder by userId
 	@Test
 	@Disabled
 	void testRetrieveBidderById() throws PersonNotFoundException {

@@ -59,6 +59,7 @@ public class CropServiceImpl implements ICropService {
 	public Crop updateById(int id, Crop crop) {
 		Crop c = cdao.findById(id).get();
 		c.setCropName(crop.getCropName());
+		c.setCropType(crop.getCropType());
 		return cdao.save(c);
 	}
 
@@ -72,8 +73,10 @@ public class CropServiceImpl implements ICropService {
 	}
 
 	@Override
+
 	public Crop updateStatus(int id, Crop crop) {
 		Crop c = cdao.findById(id).get();
+		c.setStorageSpace(crop.getStorageSpace());
 		c.setCvStatus(crop.getCvStatus());
 		return cdao.save(c);
 	}

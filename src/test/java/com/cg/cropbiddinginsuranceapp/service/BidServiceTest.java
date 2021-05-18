@@ -26,7 +26,7 @@ class BidServiceTest {
 IBidService bidService;
 
 	@Test
-	@Disabled
+@Disabled
 	void testSaveBid() {
 		Bid bid = new Bid();
 		bid.setBidId(1001);
@@ -58,7 +58,7 @@ IBidService bidService;
 	}
 	
 	@Test
-	@Disabled
+@Disabled
 	void testDeleteBid() {
 		Bid bid = bidService.deleteByBidId(1001);
 		assertEquals(1001,bid.getBidId());
@@ -66,7 +66,7 @@ IBidService bidService;
 }
 	
 	@Test
-	@Disabled
+	
 	void testUpdateBid() {
 		Bid bid = new Bid();
 		bid.setBidId(20);
@@ -103,15 +103,14 @@ IBidService bidService;
 	void testRetrieveBid() {
 		List<Bid> bid = bidService.findAll();
 		
-		assertEquals(2,bid.size());
+		assertEquals(1,bid.size());
 	}
 	
 	@Test
-	@Disabled
+	
 	void testRetrieveBidById() {
-		Bid bid = bidService.findByBidId(20);
-		
-		assertEquals(20,bid.getBidId());
+		Bid bid = bidService.findByBidId(1001);
+		assertEquals(1001,bid.getBidId());
 		}
 		
 }
