@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.cropbiddinginsuranceapp.entity.*;
-import com.cg.cropbiddinginsuranceapp.service.*;
 import com.cg.cropbiddinginsuranceapp.controller.BidderController;
 import com.cg.cropbiddinginsuranceapp.exception.PersonNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IBidderService;
@@ -25,7 +24,7 @@ public class BidderController {
 	@Autowired
 	IBidderService bidService;
 	
-	
+	//getting bidder using userId
 	
 	@GetMapping("/bidder/{id}")
 	public Bidder retrieveBidderById(@PathVariable("id") int id)
@@ -38,6 +37,8 @@ public class BidderController {
 		return bidService.retrieveBidderById(id);
 	}
 	
+	//getting all bidders from database
+	
 	@GetMapping("/bidder")
 	public List<Bidder> retrieveAllBidders()
 	{
@@ -45,11 +46,15 @@ public class BidderController {
 		return bidService.retrieveAllBidders();
 	}
 	
+	//adding bidder 
+	
 	@PostMapping("/bidder")
 	public Bidder addBidder(@RequestBody Bidder  bidder)
 	{
 		return bidService.addBidder(bidder);
 	}
+	
+	//deleting bidder
 	
 	@DeleteMapping("/bidder/{id}")
 	public Bidder deleteBidder(@PathVariable("id") int id)
@@ -57,6 +62,8 @@ public class BidderController {
 		return bidService.deleteBidder(id);
 	}
 
+	//updating the bidder
+	
 	@PutMapping("/bidder/{id}") 
 	public Bidder updateBidder(@PathVariable("id") int id, @RequestBody Bidder bidder) 
 	{

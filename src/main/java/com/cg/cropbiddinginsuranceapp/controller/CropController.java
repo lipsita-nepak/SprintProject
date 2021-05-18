@@ -2,11 +2,10 @@ package com.cg.cropbiddinginsuranceapp.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,7 +27,7 @@ public class CropController {
 	ICropService cs;
 	
 	@PostMapping("/crop")
-	public Crop addCrop(@RequestBody Crop crop)
+	public Crop addCrop(@Valid @RequestBody Crop crop)
 	{
 		return cs.save(crop);
 	}
@@ -60,7 +59,7 @@ public class CropController {
 	}
 	
 	@PutMapping("/crop/{id}")
-	public Crop updateCrop(@PathVariable("id") int id, @RequestBody Crop crop)
+	public Crop updateCrop(@PathVariable("id") int id, @Valid @RequestBody Crop crop)
 	{
 		if(cs.retrieveCropById(id)==null)
 		{
@@ -70,7 +69,7 @@ public class CropController {
 	}
 	
 	@PatchMapping("/crop/{id}")
-	public Crop updateCropById(@PathVariable("id") int id, @RequestBody Crop crop) {
+	public Crop updateCropById(@PathVariable("id") int id, @Valid @RequestBody Crop crop) {
 		if(cs.retrieveCropById(id)==null)
 		{
 			throw new CropNotFoundException("Crop not found with given id: "+id);
@@ -79,7 +78,7 @@ public class CropController {
 	}
 	
 	@PatchMapping("/crop/status/{id}")
-	public Crop updateStatusById(@PathVariable("id") int id, @RequestBody Crop crop) {
+	public Crop updateStatusById(@PathVariable("id") int id, @Valid @RequestBody Crop crop) {
 		if(cs.retrieveCropById(id)==null)
 		{
 			throw new CropNotFoundException("Crop not found with given id: "+id);

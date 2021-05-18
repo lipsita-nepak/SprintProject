@@ -2,6 +2,8 @@ package com.cg.cropbiddinginsuranceapp.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -21,7 +23,7 @@ public class BiddingController {
 	IBiddingService bs;
 	
 	@PostMapping("/bidding")
-	public Bidding addBidding(@RequestBody Bidding bidding)
+	public Bidding addBidding(@Valid @RequestBody Bidding bidding)
 	{
 		return bs.addBidding(bidding);
 	}
@@ -43,7 +45,7 @@ public class BiddingController {
 	}
 	
 	@PatchMapping("/bidding/status/{id}")
-	public Bidding updateStatusById(@PathVariable("id") int id, @RequestBody Bidding bidding) {
+	public Bidding updateStatusById(@PathVariable("id") int id, @Valid @RequestBody Bidding bidding) {
 		if(bs.findById(id)==null)
 		{
 			throw new BidNotFoundException("Bid not found with given id: "+id);
