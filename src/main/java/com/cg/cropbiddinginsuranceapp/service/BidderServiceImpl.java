@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.cg.cropbiddinginsuranceapp.entity.Bidder;
 import com.cg.cropbiddinginsuranceapp.repository.IBidderRepository;
 
-
-
 @Service
 public class BidderServiceImpl implements IBidderService {
 
@@ -18,17 +16,16 @@ public class BidderServiceImpl implements IBidderService {
 	IBidderRepository bidRepo;
 	
 	//adding bidder into database
-	
 	@Override
 	public Bidder addBidder(Bidder bidder) {
-		
+
 		return bidRepo.save(bidder);
 	}
 
 	//updating bidder in database
 	@Override
 	public Bidder updateBidder(Bidder bidder) {
-		Bidder bid=bidRepo.findById(bidder.getUserId()).get();
+		Bidder bid = bidRepo.findById(bidder.getUserId()).get();
 		bid.setAadharNumber(bidder.getAadharNumber());
 		bid.setBankDetails(bidder.getBankDetails());
 		bid.setContactNumber(bidder.getContactNumber());
@@ -37,7 +34,7 @@ public class BidderServiceImpl implements IBidderService {
 		bid.setName(bidder.getName());
 		bid.setPanNumber(bidder.getPanNumber());
 		bid.setTraderLicence(bidder.getTraderLicence());
-		
+
 		return bidRepo.save(bid);
 	}
 
@@ -45,25 +42,27 @@ public class BidderServiceImpl implements IBidderService {
 	
 	@Override
 	public Bidder deleteBidder(int id) {
-		Bidder bid =bidRepo.findById(id).get();
+		Optional<Bidder> opt = bidRepo.findById(id);
+		if (!opt.isPresent()) {
+			return null;
+		}
 		bidRepo.deleteById(id);
-		return bid;
+		return opt.get();
 	}
 
 	//retrieving all bidders from database
 	@Override
 	public List<Bidder> retrieveAllBidders() {
-		
+
 		return bidRepo.findAll();
 	}
 
 	//retrieving bidder using userId from database
 	@Override
 	public Bidder retrieveBidderById(int id) {
-		
-		Optional<Bidder> opt=bidRepo.findById(id);
-		if(!opt.isPresent())
-		{
+
+		Optional<Bidder> opt = bidRepo.findById(id);
+		if (!opt.isPresent()) {
 			return null;
 		}
 		return opt.get();

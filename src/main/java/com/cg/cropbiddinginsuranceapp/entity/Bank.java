@@ -24,7 +24,6 @@ import lombok.ToString;
 public class Bank {
 
 	// Fields
-
 	@Id
 	@NonNull
 	private long bankId;
@@ -35,7 +34,7 @@ public class Bank {
 
 	@NonNull
 	@NotBlank
-	private String IFSCCode;
+	private String ifscCode;
 
 	// HAS-A-Relationship between bank and address
 

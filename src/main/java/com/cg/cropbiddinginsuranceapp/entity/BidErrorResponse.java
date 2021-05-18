@@ -2,8 +2,8 @@ package com.cg.cropbiddinginsuranceapp.entity;
 
 public class BidErrorResponse {
 
-	private int status; //  error code 404
-	private String message; // bid not found with the given id
+	private int status; 
+	private String message; 
 	private long timeStamp;
 	
 	

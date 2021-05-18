@@ -16,58 +16,51 @@ import com.cg.cropbiddinginsuranceapp.entity.*;
 import com.cg.cropbiddinginsuranceapp.controller.BidderController;
 import com.cg.cropbiddinginsuranceapp.exception.PersonNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IBidderService;
+import javax.validation.Valid;
 
 @RestController
 public class BidderController {
-	
+
 	Logger logger = LogManager.getLogger(BidderController.class);
 	@Autowired
 	IBidderService bidService;
-	
-	//getting bidder using userId
+
+  //getting bidder using userId
 	
 	@GetMapping("/bidder/{id}")
-	public Bidder retrieveBidderById(@PathVariable("id") int id)
-	{
+	public Bidder retrieveBidderById(@PathVariable("id") int id) {
 		logger.info("Bidder Service Instantiated");
-		if(bidService.retrieveBidderById(id)==null)
-		{
+		if (bidService.retrieveBidderById(id) == null) {
 			throw new PersonNotFoundException("Bidder not found");
 		}
 		return bidService.retrieveBidderById(id);
 	}
 	
 	//getting all bidders from database
-	
 	@GetMapping("/bidder")
-	public List<Bidder> retrieveAllBidders()
-	{
-		
+	public List<Bidder> retrieveAllBidders() {
+
 		return bidService.retrieveAllBidders();
 	}
-	
+
 	//adding bidder 
-	
 	@PostMapping("/bidder")
-	public Bidder addBidder(@RequestBody Bidder  bidder)
-	{
+	public Bidder addBidder(@Valid @RequestBody Bidder bidder) {
 		return bidService.addBidder(bidder);
 	}
-	
-	//deleting bidder
-	
+
+  //deleting bidder
 	@DeleteMapping("/bidder/{id}")
-	public Bidder deleteBidder(@PathVariable("id") int id)
-	{
+	public Bidder deleteBidder(@PathVariable("id") int id) {
 		return bidService.deleteBidder(id);
 	}
-
+  
 	//updating the bidder
 	
 	@PutMapping("/bidder/{id}") 
-	public Bidder updateBidder(@PathVariable("id") int id, @RequestBody Bidder bidder) 
+	public Bidder updateBidder(@PathVariable("id") int id, @Valid @RequestBody Bidder bidder) 
 	{
 		return bidService.updateBidder(bidder);
 	}
-	
+
 }

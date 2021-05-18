@@ -18,6 +18,7 @@ import javax.persistence.Enumerated;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Crop {
+
 	@Id
 	private int cropId;
 	@NotEmpty(message="croptype should not be empty")
@@ -32,7 +33,7 @@ public class Crop {
 	private double quantity;
 	
 	@Enumerated(EnumType.STRING)
-	private StorageSpace StorageSpace;
+	private StorageSpace storageSpace;
 	@Enumerated(EnumType.STRING)
 	private CropVerificationStatus cvStatus;
 	

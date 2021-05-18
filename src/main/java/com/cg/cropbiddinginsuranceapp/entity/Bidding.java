@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Bidding {
+	
 	@Id
 	private int biddingId;
 	@NotNull(message="bidPerQuintal should not be empty")

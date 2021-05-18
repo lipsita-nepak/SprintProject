@@ -11,9 +11,8 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class FarmerErrorResponse {
-
-
+public class ErrorResponse {
+  
 	private int status;
 	private String message;
 	private long timeStamp;

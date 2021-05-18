@@ -16,34 +16,30 @@ import com.cg.cropbiddinginsuranceapp.entity.Bidding;
 import com.cg.cropbiddinginsuranceapp.exception.BidNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IBiddingService;
 
-
 @RestController
 public class BiddingController {
 	@Autowired
 	IBiddingService bs;
-	
+
 	@PostMapping("/bidding")
 	public Bidding addBidding(@Valid @RequestBody Bidding bidding)
 	{
 		return bs.addBidding(bidding);
 	}
-	
+
 	@GetMapping("/bidding")
-	public List<Bidding> retrieveAll()
-	{
+	public List<Bidding> retrieveAll() {
 		return bs.retriveAllBidding();
 	}
-	
+
 	@GetMapping("/bidding/id/{id}")
-	public Bidding retrieveById(@PathVariable("id")int id)
-	{
-		if(bs.findById(id)==null)
-		{
-			throw new BidNotFoundException("Bid not found with given id: "+id);
+	public Bidding retrieveById(@PathVariable("id") int id) {
+		if (bs.findById(id) == null) {
+			throw new BidNotFoundException("Bid not found with given id: " + id);
 		}
 		return bs.findById(id);
 	}
-	
+
 	@PatchMapping("/bidding/status/{id}")
 	public Bidding updateStatusById(@PathVariable("id") int id, @Valid @RequestBody Bidding bidding) {
 		if(bs.findById(id)==null)

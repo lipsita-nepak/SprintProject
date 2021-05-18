@@ -8,6 +8,7 @@ import com.cg.cropbiddinginsuranceapp.entity.Farmer;
 
 @Service
 public interface IFarmerService {
+	
 	public Farmer addFarmer(Farmer farmer);
 
 	public Farmer updateFarmer(int id, Farmer farmer);

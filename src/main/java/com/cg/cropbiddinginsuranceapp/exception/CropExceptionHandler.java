@@ -5,18 +5,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.cg.cropbiddinginsuranceapp.entity.CropErrorMessage;
+import com.cg.cropbiddinginsuranceapp.entity.ErrorResponse;
 
 @ControllerAdvice
 public class CropExceptionHandler {
-	
+
 	@ExceptionHandler
-	public ResponseEntity<CropErrorMessage> handleException(CropNotFoundException e){
-		CropErrorMessage error=new CropErrorMessage();
+	public ResponseEntity<ErrorResponse> handleException(CropNotFoundException e) {
+		ErrorResponse error = new ErrorResponse();
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(e.getMessage());
 		error.setTimeStamp(System.currentTimeMillis());
-		return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
 }

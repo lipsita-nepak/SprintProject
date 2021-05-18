@@ -1,7 +1,7 @@
 package com.cg.cropbiddinginsuranceapp.exception;
 
 public class BidNotFoundException extends RuntimeException {
-	
+
 	public BidNotFoundException(String message, Throwable cause) {
 		super(message, cause);
 	}
