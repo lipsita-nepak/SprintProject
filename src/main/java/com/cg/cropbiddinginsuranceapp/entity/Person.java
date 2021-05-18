@@ -55,13 +55,15 @@ public class Person {
 	private String panNumber;
 
 	// HAS-A-Relationship between farmer and address
+	// HAS-A-Relationship between Bidder and address 	
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "HomeNo", referencedColumnName = "houseno")
 	private Address homeAddress;
 
 	// HAS-A-Relationship between farmer and account
-
+	// HAS-A-Relationship between Bidder and account
+	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "accountId", referencedColumnName = "accountId")
 	private Account bankDetails;
