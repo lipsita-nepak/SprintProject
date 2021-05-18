@@ -1,0 +1,6 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 105 ciObject found
+ciMethod org/gradle/api/internal/attributes/DefaultImmutableAttributes keySet ()Lcom/google/common/collect/ImmutableSet; 3105 1 7044 0 -1
+ciMethodData org/gradle/api/internal/attributes/DefaultImmutableAttributes keySet ()Lcom/google/common/collect/ImmutableSet; 0 0 orig 264 192 116 67 102 0 0 0 0 224 91 14 25 0 0 0 0 120 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 32 101 120 116 114 97 32 100 97 116 97 32 108 111 99 107 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 132 1 0 0 1 208 0 0 1 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 3 0 2 0 0 0 48 0 0 0 255 255 255 255 5 192 4 0 0 0 0 0 data 6 0x4c005 0x0 0x1b1be790 0x19fa 0x80191048 0xa oops 2 2 com/google/common/collect/RegularImmutableMap
