@@ -35,8 +35,10 @@ class CropServiceMockitoTest {
 		MockitoAnnotations.openMocks(this);
 	}
 	
+	/**
+	 * Test case for the method to create new crop without database
+	 */
 	@Test
-	@Disabled
 	void testAdd(){
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.save(c)).thenReturn(c);
@@ -44,8 +46,10 @@ class CropServiceMockitoTest {
 		assertEquals(104,crop.getCropId());
 	}
 	
+	/**
+	 * Test case for the method to get all the values without database
+	 */
 	@Test 
-	@Disabled
 	void testViewAll() {
 		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
@@ -57,24 +61,30 @@ class CropServiceMockitoTest {
 		assertEquals(2,croplist.size());
 	}
 	
+	/**
+	 * Test case for the method to get the values by id without database
+	 */
 	@Test
-	@Disabled
 	void testViewById() {
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.findById(104)).thenReturn(Optional.of(c));
 		assertEquals(104,c.getCropId());
 	}
 	
+	/**
+	 * Test case for the method to get the values by name without database
+	 */
 	@Test
-	@Disabled
 	void testViewByName() {
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.getCropByName("paddy")).thenReturn(c);
 		assertEquals("paddy",c.getCropName());
 	}
 	
+	/**
+	 * Test case for the method to delete the crop by id without database
+	 */
 	@Test
-	@Disabled
 	void testDelete() {
 		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.findById(104)).thenReturn(Optional.of(c));
@@ -82,18 +92,22 @@ class CropServiceMockitoTest {
 		assertEquals(104,c.getCropId());
 	}
 	
+	/**
+	 * Test case for the method to update all the values without database
+	 */
 	@Test
-	@Disabled
 	void testUpdate() {
 		Crop c=new Crop(104, "cash", "rice", "clayloam", 1800.0,50.0);
 		Mockito.when(cdao.findById(104)).thenReturn(Optional.of(c));
 		Mockito.when(cdao.save(c)).thenReturn(c);
-		Crop crop=cs.update(c);
+		Crop crop=cs.update(104,c);
 		assertEquals("rice",crop.getCropName());
 	}
 	
+	/**
+	 * Test case for the method to update the status of crop without database
+	 */
 	@Test
-	@Disabled
 	void testUpdateStatus() {
 		Crop c=new Crop(104, "cash", "rice", "clayloam", 1800.0,50.0,
 				StorageSpace.NO_SHED,CropVerificationStatus.PENDING);

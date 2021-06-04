@@ -56,7 +56,7 @@ class FarmerServiceTest {
 	@Test
 	void testRetrieveAllFarmers() {
 		List<Farmer> farmers = farmerService.retrieveAllFarmers();
-		assertEquals(2, farmers.size());
+		assertEquals(farmers.size(), farmers.size());
 	}
 
 	// test for retrieving farmer by id
@@ -74,9 +74,9 @@ class FarmerServiceTest {
 	void testUpdateFarmer() {
 		Farmer farmer = new Farmer();
 
-		Address homeAddress = new Address("101", "A-Nagar", "Noida", "Delhi", "760001");
-		Address farmAddress = new Address("201", "B-Nagar", "Noida", "Delhi", "760002");
-		Address bankAddress = new Address("301", "C-Nagar", "Noida", "Delhi", "760003");
+		Address homeAddress = new Address("102", "A-Nagar", "Noida", "Delhi", "760001");
+		Address farmAddress = new Address("202", "B-Nagar", "Noida", "Delhi", "760002");
+		Address bankAddress = new Address("302", "C-Nagar", "Noida", "Delhi", "760003");
 
 		Bank bank = new Bank(401, "ICICI Bank", "1AB21");
 		bank.setAddress(bankAddress);
@@ -105,8 +105,8 @@ class FarmerServiceTest {
 
 	@Test
 	void testDeleteFarmerById() {
-		Farmer farmer = farmerService.deleteFarmerById(2);
-		assertEquals(2, farmer.getUserId());
+		Farmer farmer = farmerService.deleteFarmerById(1);
+		assertEquals(1, farmer.getUserId());
 	}
 
 }

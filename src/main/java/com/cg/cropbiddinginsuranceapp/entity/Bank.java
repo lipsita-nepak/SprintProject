@@ -29,11 +29,9 @@ public class Bank {
 	private long bankId;
 
 	@NonNull
-	@NotBlank
 	private String bankName;
 
 	@NonNull
-	@NotBlank
 	private String ifscCode;
 
 	// HAS-A-Relationship between bank and address

@@ -5,7 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cropbiddinginsuranceapp.entity.Crop;
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
+import com.cg.cropbiddinginsuranceapp.repository.ICropDao;
 import com.cg.cropbiddinginsuranceapp.repository.IFarmerRepository;
 
 @Service
@@ -13,6 +15,9 @@ public class FarmerServiceImpl implements IFarmerService {
 
 	@Autowired
 	IFarmerRepository farmerRepo;
+	
+	@Autowired
+	ICropDao cdao;
 
 	// Adding Farmer into the DATABASE
 
@@ -71,5 +76,12 @@ public class FarmerServiceImpl implements IFarmerService {
 		farmerRepo.deleteById(id);
 		return f.get(); // if farmer of given id is present then return the deleted farmer details
 	}
+
+	@Override
+	public List<Crop> getCropList() {
+		return cdao.findAll();
+	}
+	
+	
 
 }
