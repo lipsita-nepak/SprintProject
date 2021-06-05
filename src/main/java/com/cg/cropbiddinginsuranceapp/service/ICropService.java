@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
+import com.cg.cropbiddinginsuranceapp.entity.Farmer;
 
 
 @Service
@@ -13,7 +14,7 @@ public interface ICropService {
 	Crop deleteCrop(int id);
 	List<Crop>retrieveAllCrops();
 	Crop retrieveCropById(int id);
-	Crop update(Crop crop);
+	Crop update(int id,Crop crop);
 	Crop updateById(int id,Crop crop);
 	Crop getByCropName(String cropName);
 	Crop updateStatus(int id,Crop crop);

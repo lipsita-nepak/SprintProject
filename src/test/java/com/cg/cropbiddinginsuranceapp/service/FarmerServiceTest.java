@@ -78,6 +78,7 @@ class FarmerServiceTest {
 	void testRetrieveAllFarmers() {
 		log.info("Testing RetrieveAllFarmers()");
 		List<Farmer> farmers = farmerService.retrieveAllFarmers();
+
 		
 		assertEquals(1, farmers.size());
 		log.info("Successful result");
@@ -104,6 +105,7 @@ class FarmerServiceTest {
 	void testUpdateFarmer() {
 		Farmer farmer = new Farmer();
 
+
 		Address homeAddress = new Address("101", "A-Nagar", "Noida", "Delhi", "760001");
 		Address farmAddress = new Address("201", "B-Nagar", "Noida", "Delhi", "760002");
 		Address bankAddress = new Address("301", "C-Nagar", "Noida", "Delhi", "760003");
@@ -114,6 +116,7 @@ class FarmerServiceTest {
 		List<Crop> cropList= new ArrayList<>();
 		cropList.add(c1);
 		cropList.add(c2);
+
 
 		Bank bank = new Bank(401, "ICICI Bank", "1AB21");
 		bank.setAddress(bankAddress);
@@ -145,11 +148,14 @@ class FarmerServiceTest {
 	@Test
 	@Disabled
 	void testDeleteFarmerById() {
+
 		log.info("Testing DeleteFarmerById()");
 		Farmer farmer = farmerService.deleteFarmerById(4);
 		
 		assertEquals(4, farmer.getUserId());
 		log.info("Successful result");
+
+		
 	}
 
 }

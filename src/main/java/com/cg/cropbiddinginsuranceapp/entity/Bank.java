@@ -30,14 +30,15 @@ public class Bank {
 	private long bankId;
 
 	@NonNull
+
 	@NotBlank(message = "Bank Name is mandatory")
 	private String bankName;
 
 	@NonNull
 	@NotBlank(message = "IFSC Code is mandatory")
-	private String ifscCode;
-
-	// HAS-A-Relationship between bank and address
+  private String ifscCode;
+	
+// HAS-A-Relationship between bank and address
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "BankPlotNo", referencedColumnName = "houseno")

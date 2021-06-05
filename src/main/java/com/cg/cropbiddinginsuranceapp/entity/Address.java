@@ -21,6 +21,7 @@ public class Address {
 	// Fields
 
 	@Id
+
 	@NotBlank(message = "HouseNo is mandatory")
 	private String houseno;
 
@@ -31,8 +32,8 @@ public class Address {
 	private String city;
 
 	@NotBlank(message = "State is mandatory")
-	private String state;
-
-	@Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")
+  private String state;
+  
+ @Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")
 	private String pincode;
 }

@@ -7,14 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -27,15 +29,12 @@ public class Crop {
 
 	@Id
 	private int cropId;
-	@NotEmpty(message="croptype should not be empty")
+	@NotEmpty(message="crop type should not be empty")
 	private String cropType;
-	@NotEmpty(message="cropname should not be empty")
+	@NotEmpty(message="crop name should not be empty")
 	private String cropName;
-	@NotEmpty(message="croptype should not be empty")
 	private String soilType;
-	@NotNull(message="basePricePerQuintal should not be empty")
 	private double basePricePerQuintal;
-	@NotNull(message="quantity should not be empty")
 	private double quantity;
 	
 	@Enumerated(EnumType.STRING)
@@ -45,6 +44,7 @@ public class Crop {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy="crops",cascade=CascadeType.ALL)
+
 	private List<Farmer> farmersList;
 	
 	@JsonBackReference
@@ -52,10 +52,14 @@ public class Crop {
 		return farmersList;
 	}
 	
-	/**
+	
+
+	
+
+	
+  /**
 	 * Required Constructor for the entity class crop
 	 */
-	
 	public Crop(int cropId, String cropType, String cropName, String soilType, double basePricePerQuintal,
 			double quantity) {
 		super();
@@ -66,8 +70,10 @@ public class Crop {
 		this.basePricePerQuintal = basePricePerQuintal;
 		this.quantity = quantity;
 	}
-	
-    /**
+
+
+
+	/**
 	 * Required Constructor for the entity class crop
 	 */
 	public Crop(int cropId,String cropType,String cropName, String soilType,double basePricePerQuintal, 
@@ -82,4 +88,5 @@ public class Crop {
 		this.storageSpace = storageSpace;
 		this.cvStatus = cvStatus;
 	}
+
 }

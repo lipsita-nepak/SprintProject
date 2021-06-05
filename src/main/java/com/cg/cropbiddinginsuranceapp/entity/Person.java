@@ -1,5 +1,8 @@
 package com.cg.cropbiddinginsuranceapp.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,11 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -30,18 +38,22 @@ public class Person {
 	// Fields
 
 	@Id
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer userId;
+	private int userId;
 
 	@NonNull
 	@NotBlank(message = "Name is mandatory")
-	private String name;
+   private String name;
+	
+
+	
+	
 
 	@NonNull
-	@Size(min = 10, max = 10, message = "Contact Number should have 10 numeric values")
+  @Size(min = 10, max = 10, message = "Contact Number should have 10 numeric values")
 	private String contactNumber;
 
-	@Email
 	@NonNull
 	@NotBlank(message = "Email is mandatory")
 	private String emailId;
@@ -52,6 +64,11 @@ public class Person {
 
 	@NonNull
 	@NotBlank(message = "panNumber is mandatory")
+
+
+	
+
+	
 	private String panNumber;
 
 	// HAS-A-Relationship between farmer and address
