@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;

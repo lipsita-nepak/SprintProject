@@ -67,8 +67,7 @@ public class Crop {
 		this.quantity = quantity;
 	}
 	
-
-	/**
+    /**
 	 * Required Constructor for the entity class crop
 	 */
 	public Crop(int cropId,String cropType,String cropName, String soilType,double basePricePerQuintal, 

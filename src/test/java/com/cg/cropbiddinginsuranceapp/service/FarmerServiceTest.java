@@ -15,7 +15,6 @@ import com.cg.cropbiddinginsuranceapp.entity.Address;
 import com.cg.cropbiddinginsuranceapp.entity.Bank;
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
-
 import lombok.extern.log4j.Log4j2;
 
 @SpringBootTest

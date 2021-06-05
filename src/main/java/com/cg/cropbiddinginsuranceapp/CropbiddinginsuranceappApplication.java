@@ -17,8 +17,7 @@ public class CropbiddinginsuranceappApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CropbiddinginsuranceappApplication.class, args);
 		log.info("Initializing Application");
-
-	}
+    }
 
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2).select().paths(PathSelectors.any()).build();

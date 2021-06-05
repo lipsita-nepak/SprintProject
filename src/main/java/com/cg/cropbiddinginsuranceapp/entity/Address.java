@@ -35,5 +35,4 @@ public class Address {
 
 	@Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")
 	private String pincode;
-
 }

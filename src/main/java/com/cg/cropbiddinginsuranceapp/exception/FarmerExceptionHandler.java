@@ -20,6 +20,7 @@ public class FarmerExceptionHandler {
 		error.setTimeStamp(System.currentTimeMillis());
         
 		log.error("Handling Farmer Not Found Exception");
+		
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
@@ -32,6 +33,7 @@ public class FarmerExceptionHandler {
 		error.setTimeStamp(System.currentTimeMillis());
 
 		log.error("Handling Exception");
+		
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
 }

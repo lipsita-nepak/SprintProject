@@ -8,7 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;

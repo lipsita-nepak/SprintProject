@@ -29,6 +29,7 @@ public class ValidationHandler extends ResponseEntityExceptionHandler {
 		});
 		
 		log.error("Handling Validation Exception");
+		
 		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 
 	}

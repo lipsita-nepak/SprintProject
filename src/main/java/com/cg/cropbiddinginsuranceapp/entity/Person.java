@@ -67,5 +67,4 @@ public class Person {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "accountId", referencedColumnName = "accountId")
 	private Account bankDetails;
-
 }
