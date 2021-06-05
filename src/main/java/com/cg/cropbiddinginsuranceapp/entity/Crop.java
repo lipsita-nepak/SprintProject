@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -42,9 +44,20 @@ public class Crop {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy="crops",cascade=CascadeType.ALL)
-	private List<Farmer> farmers;
+
+	private List<Farmer> farmersList;
 	
-	/**
+	@JsonBackReference
+	public List<Farmer> getFarmer(){
+		return farmersList;
+	}
+	
+	
+
+	
+
+	
+  /**
 	 * Required Constructor for the entity class crop
 	 */
 	public Crop(int cropId, String cropType, String cropName, String soilType, double basePricePerQuintal,
@@ -57,6 +70,7 @@ public class Crop {
 		this.basePricePerQuintal = basePricePerQuintal;
 		this.quantity = quantity;
 	}
+
 
 
 	/**
@@ -74,5 +88,5 @@ public class Crop {
 		this.storageSpace = storageSpace;
 		this.cvStatus = cvStatus;
 	}
-	
+
 }
