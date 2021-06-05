@@ -21,16 +21,16 @@ public class Address {
 	// Fields
 
 	@Id
-	@NotBlank
+	@NotBlank(message = "HouseNo is mandatory")
 	private String houseno;
 
-	@NotBlank
+	@NotBlank(message = "Street is mandatory")
 	private String street;
 
-	@NotBlank
+	@NotBlank(message = "City is mandatory")
 	private String city;
 
-	@NotBlank
+	@NotBlank(message = "State is mandatory")
 	private String state;
 
 	@Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")

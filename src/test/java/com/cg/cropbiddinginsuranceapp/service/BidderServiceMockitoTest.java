@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -37,7 +38,7 @@ class BidderServiceMockitoTest {
 	
 	//test to add bidder
 	@Test
-  @Disabled
+    @Disabled
    void testAddBidder() {
 		Address homeAddress=new Address("888","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("8888","lbnagar","hyd","Telangana","502001");

@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,10 +31,10 @@ public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int userId;
+	private Integer userId;
 
 	@NonNull
-	@NotBlank
+	@NotBlank(message = "Name is mandatory")
 	private String name;
 
 	@NonNull
@@ -42,19 +43,19 @@ public class Person {
 
 	@Email
 	@NonNull
-	@NotBlank
+	@NotBlank(message = "Email is mandatory")
 	private String emailId;
 
 	@NonNull
-	@Size(min = 12,max = 12, message = "Aadhar Number should have 12 numeric values")
+	@Pattern(regexp = "\\d{4}\\s\\d{4}\\s\\d{4}", message = "AadharNo must be of pattern (xxxx xxxx xxxx)")
 	private String aadharNumber;
 
 	@NonNull
-	@NotBlank
+	@NotBlank(message = "panNumber is mandatory")
 	private String panNumber;
 
 	// HAS-A-Relationship between farmer and address
-	// HAS-A-Relationship between Bidder and address 	
+	// HAS-A-Relationship between Bidder and address
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "HomeNo", referencedColumnName = "houseno")
@@ -62,7 +63,7 @@ public class Person {
 
 	// HAS-A-Relationship between farmer and account
 	// HAS-A-Relationship between Bidder and account
-	
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "accountId", referencedColumnName = "accountId")
 	private Account bankDetails;
