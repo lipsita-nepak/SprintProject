@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.cropbiddinginsuranceapp.entity.Crop;
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
 import com.cg.cropbiddinginsuranceapp.exception.FarmerNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IFarmerService;
@@ -63,6 +64,11 @@ public class FarmerController {
 	@DeleteMapping("/farmer/{id}")
 	public Farmer deleteFarmer(@PathVariable("id") int userId) {
 		return farmerService.deleteFarmerById(userId);
+	}
+	
+	@GetMapping("/crop")
+	public List<Crop> getCropList(){
+		return farmerService.getCropList();
 	}
 
 }

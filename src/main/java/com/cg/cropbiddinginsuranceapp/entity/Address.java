@@ -21,19 +21,14 @@ public class Address {
 	// Fields
 
 	@Id
-	@NotBlank
 	private String houseno;
 
-	@NotBlank
 	private String street;
 
-	@NotBlank
 	private String city;
 
-	@NotBlank
 	private String state;
 
-	@Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")
 	private String pincode;
 
 }
