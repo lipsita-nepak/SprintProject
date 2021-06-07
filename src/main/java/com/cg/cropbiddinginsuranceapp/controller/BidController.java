@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.cropbiddinginsuranceapp.entity.Bid;
-import com.cg.cropbiddinginsuranceapp.entity.BidErrorResponse;
 import com.cg.cropbiddinginsuranceapp.exception.BidNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IBidService;
 
@@ -58,6 +56,34 @@ public class BidController {
 		return bidService.findAll();
 	}
 
+	@Autowired
+	IBidService bidService;
+
+	@GetMapping("/bid/{id}")
+	public Bid findById(@PathVariable("id") int bidId) {
+		if (bidService.findByBidId(bidId) == null) {
+			throw new BidNotFoundException("Bid not found with given id: " + bidId);
+		}
+		return bidService.findByBidId(bidId);
+	}
+
+	// To get either single user or all the users
+	@GetMapping("/bid")
+	public List<Bid> findAll() {
+		return bidService.findAll();
+	}
+
+	@DeleteMapping("/bid/{id}")
+	public Bid deleteById(@PathVariable("id") int bidId) {
+		return bidService.deleteByBidId(bidId);
+	}
+
+	// Updating all the values
+	@PutMapping("/bid/{id}")
+	public Bid putBid(@PathVariable("id") int bidId,@Valid @RequestBody Bid bid) {
+		return bidService.update(bid);
+	}
+
 	/**
 	 * This below function is used to delete a specific bid based on the give Id and
 	 * redirects to the bid service
@@ -67,7 +93,6 @@ public class BidController {
 		logger.info("delete the bid By Id");
 		return bidService.deleteByBidId(bidId);
 	}
-
 	/**
 	 * This below function is used to create a new bid and redirects to the bid
 	 * service

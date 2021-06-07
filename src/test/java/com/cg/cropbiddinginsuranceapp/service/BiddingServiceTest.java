@@ -29,7 +29,6 @@ class BiddingServiceTest {
 	IBiddingService bs;
 	
 	@Test
-	@Disabled
 	void testAdd() {
 		Address homeAddress=new Address("999","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("9999","lbnagar","hyd","Telangana","502001");
@@ -78,15 +77,12 @@ class BiddingServiceTest {
 	}
 	
 	@Test
-	@Disabled
 	void testViewAll(){
 		List<Bidding> bid=bs.retriveAllBidding();
 		assertEquals(1,bid.size());
 	}
 	
 	@Test
-	
-	@Disabled
 	void testViewAllById(){
 		Bidding bid=bs.findById(5);
 		System.out.println(bid);
@@ -94,7 +90,6 @@ class BiddingServiceTest {
 	}
 	
 	@Test
-	@Disabled
 	void testUpdateStatus(){
 		Bidding bid=bs.findById(5);
 		

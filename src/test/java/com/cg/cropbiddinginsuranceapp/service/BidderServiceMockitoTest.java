@@ -30,14 +30,16 @@ class BidderServiceMockitoTest {
 	@MockBean
 	IBidderRepository bidRepo;
 	
+	//Initialization of mock objects
 	@BeforeEach
 	void init() {
 		MockitoAnnotations.openMocks(this);
 	}
 	
+	//test to add bidder
 	@Test
-@Disabled
-	void testAddBidder() {
+    @Disabled
+   void testAddBidder() {
 		Address homeAddress=new Address("888","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("8888","lbnagar","hyd","Telangana","502001");
 		
@@ -46,7 +48,7 @@ class BidderServiceMockitoTest {
 		
 		Account bankDetails=new Account(99);
 		bankDetails.setBank(bank);
-		Bidder bidder=new Bidder("abc","sam","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","sam","1234567890","abc@gmail.com","123456789012","xyz");
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
 		
@@ -59,6 +61,7 @@ class BidderServiceMockitoTest {
 		
 	}
 	
+	//test to update bidder
 	@Test
 	@Disabled
 	void testUpdateBidder() {
@@ -72,7 +75,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","Pranil","1234554321","abc@gmail.com","123455432112","xyz");
 		bidder.setUserId(1);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
@@ -85,6 +88,7 @@ class BidderServiceMockitoTest {
 		assertEquals("Pranil", updated.getName());
 	}
 	
+	//test to delete bidder
 	@Test
 	@Disabled
 	void testDeleteBidder() {
@@ -97,7 +101,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","Pranil","1234554321","abc@gmail.com","123455432112","xyz");
 		bidder.setUserId(5);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
@@ -110,6 +114,7 @@ class BidderServiceMockitoTest {
 		
 	}
 	
+	//test to get all bidders
 	@Test
 	@Disabled
 	void testRetrieveAllBidders() {
@@ -123,7 +128,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","Pranil","1234554321","abc@gmail.com","123455432112","xyz");
 		bidder.setUserId(1);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
@@ -137,7 +142,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails1=new Account(99900);
 		bankDetails1.setBank(bank1);
 		
-		Bidder bidder1=new Bidder("abc","samyuktha","12345","sam@gmail.com","123456","xyzab");
+		Bidder bidder1=new Bidder("abc","samyuktha","1234567890","sam@gmail.com","123456789012","xyzab");
 		bidder1.setUserId(2);
 		bidder1.setBankDetails(bankDetails1);
 		bidder1.setHomeAddress(homeAddress1);
@@ -153,6 +158,7 @@ class BidderServiceMockitoTest {
 		
 	}
 	
+	//test to get bidder using user id
 	@Test
 	@Disabled
 	void testRetrieveBidderById() throws PersonNotFoundException {
@@ -166,7 +172,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","sam","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","sam","1234534567","abc@gmail.com","123450987654","xyz");
 		bidder.setUserId(5);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);

@@ -1,26 +1,75 @@
 package com.cg.cropbiddinginsuranceapp.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Crop {
+
 	@Id
 	private int cropId;
+	@NotEmpty(message="crop type should not be empty")
 	private String cropType;
+	@NotEmpty(message="crop name should not be empty")
 	private String cropName;
 	private String soilType;
 	private double basePricePerQuintal;
 	private double quantity;
 	
 	@Enumerated(EnumType.STRING)
-	private StorageSpace StorageSpace;
+	private StorageSpace storageSpace;
 	@Enumerated(EnumType.STRING)
 	private CropVerificationStatus cvStatus;
 	
-	public Crop() {}
+	@JsonIgnore
+	@ManyToMany(mappedBy="crops",cascade=CascadeType.ALL)
+
+	private List<Farmer> farmersList;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy="crops",cascade=CascadeType.ALL)
+
+	private List<Bidder> biddersList;
+	
+	
+	@JsonBackReference
+	public List<Farmer> getFarmer(){
+		return farmersList;
+	}
+	
+	@JsonBackReference
+	public List<Bidder> getBidder(){
+		return biddersList;
+	}
+	
+
+	
+
+	
+  /**
+	 * Required Constructor for the entity class crop
+	 */
 	public Crop(int cropId, String cropType, String cropName, String soilType, double basePricePerQuintal,
 			double quantity) {
 		super();
@@ -31,7 +80,13 @@ public class Crop {
 		this.basePricePerQuintal = basePricePerQuintal;
 		this.quantity = quantity;
 	}
-	public Crop(int cropId, String cropType, String cropName, String soilType, double basePricePerQuintal,
+
+
+
+	/**
+	 * Required Constructor for the entity class crop
+	 */
+	public Crop(int cropId,String cropType,String cropName, String soilType,double basePricePerQuintal, 
 			double quantity, StorageSpace storageSpace, CropVerificationStatus cvStatus) {
 		super();
 		this.cropId = cropId;
@@ -40,62 +95,8 @@ public class Crop {
 		this.soilType = soilType;
 		this.basePricePerQuintal = basePricePerQuintal;
 		this.quantity = quantity;
-		this.StorageSpace = storageSpace;
+		this.storageSpace = storageSpace;
 		this.cvStatus = cvStatus;
 	}
-	public int getCropId() {
-		return cropId;
-	}
-	public void setCropId(int cropId) {
-		this.cropId = cropId;
-	}
-	public String getCropType() {
-		return cropType;
-	}
-	public void setCropType(String cropType) {
-		this.cropType = cropType;
-	}
-	public String getCropName() {
-		return cropName;
-	}
-	public void setCropName(String cropName) {
-		this.cropName = cropName;
-	}
-	public String getSoilType() {
-		return soilType;
-	}
-	public void setSoilType(String soilType) {
-		this.soilType = soilType;
-	}
-	public double getBasePricePerQuintal() {
-		return basePricePerQuintal;
-	}
-	public void setBasePricePerQuintal(double basePricePerQuintal) {
-		this.basePricePerQuintal = basePricePerQuintal;
-	}
-	public double getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
-	}
-	public StorageSpace getStorageSpace() {
-		return StorageSpace;
-	}
-	public void setStorageSpace(StorageSpace storageSpace) {
-		StorageSpace = storageSpace;
-	}
-	public CropVerificationStatus getCvStatus() {
-		return cvStatus;
-	}
-	public void setCvStatus(CropVerificationStatus cvStatus) {
-		this.cvStatus = cvStatus;
-	}
-	
-	@Override
-	public String toString() {
-		return "Crop [cropId=" + cropId + ", cropType=" + cropType + ", cropName=" + cropName + ", soilType=" + soilType
-				+ ", basePricePerQuintal=" + basePricePerQuintal + ", quantity=" + quantity + ", StorageSpace="
-				+ StorageSpace + ", cvStatus=" + cvStatus + "]";
-	}
+
 }

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,19 +21,19 @@ public class Address {
 	// Fields
 
 	@Id
-	@NotBlank
+
+	@NotBlank(message = "HouseNo is mandatory")
 	private String houseno;
 
-	@NotBlank
+	@NotBlank(message = "Street is mandatory")
 	private String street;
 
-	@NotBlank
+	@NotBlank(message = "City is mandatory")
 	private String city;
 
-	@NotBlank
-	private String state;
-
-	@Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")
+	@NotBlank(message = "State is mandatory")
+  private String state;
+  
+ @Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")
 	private String pincode;
-
 }
