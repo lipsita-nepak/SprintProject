@@ -9,10 +9,6 @@ import com.cg.cropbiddinginsuranceapp.entity.Bid;
 
 // Spring Data JPA
 @Repository
-	public interface IBidRepository extends JpaRepository<Bid, Integer > {
+public interface IBidRepository extends JpaRepository<Bid, Integer> {
 
-	
-
-	
-	}
-
+}

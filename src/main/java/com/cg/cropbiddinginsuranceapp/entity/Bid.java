@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +25,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name="bid")
+@Table(name = "bid")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -30,27 +33,20 @@ import lombok.ToString;
 @ToString
 
 public class Bid {
-
-@Id
-
-@NonNull
+	@Id
+	@NonNull
+	@Min(1)
 	private int bidId;
+	@NonNull
+	@NotEmpty(message = "bid date should not be empty")
+	private String dateOfBidding;
 
-@NonNull
-@NotBlank
-private String dateOfBidding;
-	
-
-
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="farmer",referencedColumnName="userId")
+	// HAS-A relation between Farmer and crop
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "farmer", referencedColumnName = "userId")
 	private Farmer farmer;
 
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="crop",referencedColumnName="cropId")
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "crop", referencedColumnName = "cropId")
 	private Crop crop;
-	
-	
-	
-	
-	}
+}
