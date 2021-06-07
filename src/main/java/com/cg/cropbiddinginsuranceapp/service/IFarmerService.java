@@ -20,6 +20,5 @@ public interface IFarmerService {
 
 	public Farmer retrieveFarmerById(int id);
 	
-	public List<Crop> getCropList();
 
 }
