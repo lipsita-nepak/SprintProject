@@ -48,7 +48,7 @@ class BidderServiceMockitoTest {
 		
 		Account bankDetails=new Account(99);
 		bankDetails.setBank(bank);
-		Bidder bidder=new Bidder("abc","sam","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","sam","1234567890","abc@gmail.com","123456789012","xyz");
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
 		
@@ -75,7 +75,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","Pranil","1234554321","abc@gmail.com","123455432112","xyz");
 		bidder.setUserId(1);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
@@ -101,7 +101,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","Pranil","1234554321","abc@gmail.com","123455432112","xyz");
 		bidder.setUserId(5);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
@@ -128,7 +128,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","Pranil","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","Pranil","1234554321","abc@gmail.com","123455432112","xyz");
 		bidder.setUserId(1);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);
@@ -142,7 +142,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails1=new Account(99900);
 		bankDetails1.setBank(bank1);
 		
-		Bidder bidder1=new Bidder("abc","samyuktha","12345","sam@gmail.com","123456","xyzab");
+		Bidder bidder1=new Bidder("abc","samyuktha","1234567890","sam@gmail.com","123456789012","xyzab");
 		bidder1.setUserId(2);
 		bidder1.setBankDetails(bankDetails1);
 		bidder1.setHomeAddress(homeAddress1);
@@ -172,7 +172,7 @@ class BidderServiceMockitoTest {
 		Account bankDetails=new Account(999);
 		bankDetails.setBank(bank);
 		
-		Bidder bidder=new Bidder("abc","sam","12345","abc@gmail.com","12345","xyz");
+		Bidder bidder=new Bidder("abc","sam","1234534567","abc@gmail.com","123450987654","xyz");
 		bidder.setUserId(5);
 		bidder.setBankDetails(bankDetails);
 		bidder.setHomeAddress(homeAddress);

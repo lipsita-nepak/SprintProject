@@ -2,6 +2,7 @@ package com.cg.cropbiddinginsuranceapp.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,11 @@ import com.cg.cropbiddinginsuranceapp.exception.*;
 @SpringBootTest
 class BidderServiceTest {
 
+	
+	 //Logger
+	 
+	org.apache.logging.log4j.Logger logger =LogManager.getLogger(BidderServiceTest.class);
+	
 	@Autowired
 	IBidderService bidService;
 	
@@ -35,6 +41,7 @@ class BidderServiceTest {
 		bidder.setHomeAddress(homeAddress);
 		
 		Bidder persistedBidder=bidService.addBidder(bidder);
+		logger.info("new bidder added "+persistedBidder);
 		assertEquals("sam",persistedBidder.getName());
 		assertEquals("abc@gmail.com",persistedBidder.getEmailId());
 		
@@ -62,6 +69,7 @@ class BidderServiceTest {
 		bidder.setHomeAddress(homeAddress);
 		
 		Bidder updated=bidService.updateBidder(bidder);
+		logger.info("Bidder updated "+updated);
 		System.out.println(updated);
 		assertEquals("Pranil", updated.getName());
 	}
@@ -71,6 +79,7 @@ class BidderServiceTest {
 	@Disabled
 	void testDeleteBidder() {
 		Bidder bidder = bidService.deleteBidder(4);
+		logger.info("deleted bidder id is "+bidder.getUserId());
 		assertEquals(4, bidder.getUserId());
 		
 	}
@@ -80,6 +89,7 @@ class BidderServiceTest {
 	@Disabled
 	void testRetrieveAllBidders() {
 		List<Bidder> bidder = bidService.retrieveAllBidders();
+		logger.info("Bidder list "+bidder);
 		int size=bidder.size();
 		assertEquals(size, bidder.size());
 		
@@ -90,6 +100,7 @@ class BidderServiceTest {
 	@Disabled
 	void testRetrieveBidderById() throws PersonNotFoundException {
 		Bidder bidder = bidService.retrieveBidderById(3);
+		logger.info("getting bidder by id "+bidder);
 		assertEquals("Pranil",bidder.getName());
 		
 	}
