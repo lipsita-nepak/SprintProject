@@ -56,33 +56,6 @@ public class BidController {
 		return bidService.findAll();
 	}
 
-	@Autowired
-	IBidService bidService;
-
-	@GetMapping("/bid/{id}")
-	public Bid findById(@PathVariable("id") int bidId) {
-		if (bidService.findByBidId(bidId) == null) {
-			throw new BidNotFoundException("Bid not found with given id: " + bidId);
-		}
-		return bidService.findByBidId(bidId);
-	}
-
-	// To get either single user or all the users
-	@GetMapping("/bid")
-	public List<Bid> findAll() {
-		return bidService.findAll();
-	}
-
-	@DeleteMapping("/bid/{id}")
-	public Bid deleteById(@PathVariable("id") int bidId) {
-		return bidService.deleteByBidId(bidId);
-	}
-
-	// Updating all the values
-	@PutMapping("/bid/{id}")
-	public Bid putBid(@PathVariable("id") int bidId,@Valid @RequestBody Bid bid) {
-		return bidService.update(bid);
-	}
 
 	/**
 	 * This below function is used to delete a specific bid based on the give Id and
