@@ -3,6 +3,7 @@ package com.cg.cropbiddinginsuranceapp.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,11 @@ import com.cg.cropbiddinginsuranceapp.repository.IBidderRepository;
 @Service
 public class BidderServiceImpl implements IBidderService {
 
+	/**
+	 * Logger
+	 */
+	org.apache.logging.log4j.Logger logger =LogManager.getLogger(BidderServiceImpl.class);
+	
 	@Autowired
 	IBidderRepository bidRepo;
 	
@@ -19,6 +25,7 @@ public class BidderServiceImpl implements IBidderService {
 	@Override
 	public Bidder addBidder(Bidder bidder) {
 
+		logger.info("save method");
 		return bidRepo.save(bidder);
 	}
 
@@ -34,7 +41,7 @@ public class BidderServiceImpl implements IBidderService {
 		bid.setName(bidder.getName());
 		bid.setPanNumber(bidder.getPanNumber());
 		bid.setTraderLicence(bidder.getTraderLicence());
-
+		logger.info("update method");
 		return bidRepo.save(bid);
 	}
 
@@ -47,13 +54,14 @@ public class BidderServiceImpl implements IBidderService {
 			return null;
 		}
 		bidRepo.deleteById(id);
+		logger.info("delete bidder by id");
 		return opt.get();
 	}
 
 	//retrieving all bidders from database
 	@Override
 	public List<Bidder> retrieveAllBidders() {
-
+		logger.info("get all bidders");
 		return bidRepo.findAll();
 	}
 
@@ -65,6 +73,7 @@ public class BidderServiceImpl implements IBidderService {
 		if (!opt.isPresent()) {
 			return null;
 		}
+		logger.info("get bidder by id");
 		return opt.get();
 	}
 
