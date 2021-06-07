@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.cropbiddinginsuranceapp.entity.*;
 import com.cg.cropbiddinginsuranceapp.controller.BidderController;
-import com.cg.cropbiddinginsuranceapp.exception.CropNotFoundException;
 import com.cg.cropbiddinginsuranceapp.exception.PersonNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IBidderService;
 import javax.validation.Valid;
