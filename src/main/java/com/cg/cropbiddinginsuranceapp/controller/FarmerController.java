@@ -100,4 +100,5 @@ public class FarmerController {
 		// If farmer of given userId is there then it deletes that farmer and displays the deleted farmer dtls
 		return new ResponseEntity<>(farmerService.deleteFarmerById(userId),HttpStatus.OK);
 	}
+	
 }

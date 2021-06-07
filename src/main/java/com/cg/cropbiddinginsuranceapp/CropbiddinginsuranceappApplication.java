@@ -27,7 +27,6 @@ public class CropbiddinginsuranceappApplication {
 		log.info("Initializing Application");
     }
 
-	}
 
 
 	public Docket api() {

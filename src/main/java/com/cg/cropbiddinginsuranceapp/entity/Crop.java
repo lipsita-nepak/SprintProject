@@ -47,11 +47,21 @@ public class Crop {
 
 	private List<Farmer> farmersList;
 	
+	@JsonIgnore
+	@ManyToMany(mappedBy="crops",cascade=CascadeType.ALL)
+
+	private List<Bidder> biddersList;
+	
+	
 	@JsonBackReference
 	public List<Farmer> getFarmer(){
 		return farmersList;
 	}
 	
+	@JsonBackReference
+	public List<Bidder> getBidder(){
+		return biddersList;
+	}
 	
 
 	

@@ -77,4 +77,12 @@ public class BidderController {
 		return bidService.updateBidder(bidder);
 	}
 
+	//get all crops
+	
+	@GetMapping("/crop")
+	public List<Crop> getCropList() {
+
+		logger.info("get all crops");
+		return bidService.getCropList();
+	}
 }

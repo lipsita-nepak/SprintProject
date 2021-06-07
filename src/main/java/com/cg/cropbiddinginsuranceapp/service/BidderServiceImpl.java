@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.cropbiddinginsuranceapp.entity.Bidder;
+import com.cg.cropbiddinginsuranceapp.entity.Crop;
 import com.cg.cropbiddinginsuranceapp.repository.IBidderRepository;
+import com.cg.cropbiddinginsuranceapp.repository.ICropDao;
 
 @Service
 public class BidderServiceImpl implements IBidderService {
@@ -20,6 +22,9 @@ public class BidderServiceImpl implements IBidderService {
 	
 	@Autowired
 	IBidderRepository bidRepo;
+	
+	@Autowired
+	ICropDao cRepo;
 	
 	//adding bidder into database
 	@Override
@@ -77,4 +82,10 @@ public class BidderServiceImpl implements IBidderService {
 		return opt.get();
 	}
 
+	//get all crops
+	@Override
+	public List<Crop> getCropList() {
+		logger.info("get all crops");
+		return cRepo.findAll();
+	}
 }
