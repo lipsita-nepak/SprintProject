@@ -38,7 +38,7 @@ class BidderServiceMockitoTest {
 	
 	//test to add bidder
 	@Test
-  @Disabled
+    @Disabled
    void testAddBidder() {
 		Address homeAddress=new Address("888","yamgal","Hyd","Telangana","501510");
 		Address bankAddress=new Address("8888","lbnagar","hyd","Telangana","502001");

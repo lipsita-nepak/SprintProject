@@ -24,7 +24,7 @@ class BidderServiceTest {
 	
 	//test to add bidder
 	@Test
-	
+	@Disabled
 	void testAddBidder() {
 		
 		
@@ -50,7 +50,7 @@ class BidderServiceTest {
 	
 	//test to update bidder
 	@Test
-	@Disabled
+	//@Disabled
 	void testUpdateBidder() {
 		
 		
@@ -76,6 +76,7 @@ class BidderServiceTest {
 	
 	//test to delete bidder
 	@Test
+	@Disabled
 	void testDeleteBidder() {
 		Bidder bidder = bidService.deleteBidder(4);
 		logger.info("deleted bidder id is "+bidder.getUserId());

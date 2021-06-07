@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -37,25 +38,41 @@ public class Person {
 	// Fields
 
 	@Id
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 
 	@NonNull
-	private String name;
+	@NotBlank(message = "Name is mandatory")
+   private String name;
+	
+
+	
+	
 
 	@NonNull
+  @Size(min = 10, max = 10, message = "Contact Number should have 10 numeric values")
 	private String contactNumber;
 
 	@NonNull
+	@NotBlank(message = "Email is mandatory")
 	private String emailId;
 
 	@NonNull
+	@Pattern(regexp = "\\d{4}\\s\\d{4}\\s\\d{4}", message = "AadharNo must be of pattern (xxxx xxxx xxxx)")
 	private String aadharNumber;
 
 	@NonNull
+	@NotBlank(message = "panNumber is mandatory")
+
+
+	
+
+	
 	private String panNumber;
 
 	// HAS-A-Relationship between farmer and address
-	// HAS-A-Relationship between Bidder and address 	
+	// HAS-A-Relationship between Bidder and address
 
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "HomeNo", referencedColumnName = "houseno")
@@ -63,7 +80,7 @@ public class Person {
 
 	// HAS-A-Relationship between farmer and account
 	// HAS-A-Relationship between Bidder and account
-	
+
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "accountId", referencedColumnName = "accountId")
 	private Account bankDetails;

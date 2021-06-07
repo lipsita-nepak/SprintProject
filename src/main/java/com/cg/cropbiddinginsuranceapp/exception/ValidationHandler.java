@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import lombok.extern.log4j.Log4j2;
+
 @ControllerAdvice
+@Log4j2
 public class ValidationHandler extends ResponseEntityExceptionHandler {
 
 	@Override
@@ -24,6 +27,9 @@ public class ValidationHandler extends ResponseEntityExceptionHandler {
 			String message = error.getDefaultMessage();
 			errors.put(fieldName, message);
 		});
+		
+		log.error("Handling Validation Exception");
+		
 		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 
 	}

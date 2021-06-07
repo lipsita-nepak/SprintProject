@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.cg.cropbiddinginsuranceapp.entity.ErrorResponse;
 
+import lombok.extern.log4j.Log4j2;
+
 @ControllerAdvice
+@Log4j2
 public class FarmerExceptionHandler {
 
 	@ExceptionHandler
@@ -15,7 +18,9 @@ public class FarmerExceptionHandler {
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(exception.getMessage());
 		error.setTimeStamp(System.currentTimeMillis());
-
+        
+		log.error("Handling Farmer Not Found Exception");
+		
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
 
@@ -27,6 +32,8 @@ public class FarmerExceptionHandler {
 		error.setMessage(exception.getMessage());
 		error.setTimeStamp(System.currentTimeMillis());
 
+		log.error("Handling Exception");
+		
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
 }
