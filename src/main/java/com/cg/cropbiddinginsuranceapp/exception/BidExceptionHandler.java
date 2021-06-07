@@ -13,11 +13,7 @@ import com.cg.cropbiddinginsuranceapp.entity.ErrorResponse;
 public class BidExceptionHandler {
 
 	@ExceptionHandler
-	public ResponseEntity<BidErrorResponse> handleException(BidNotFoundException exception) {
-		BidErrorResponse error = new BidErrorResponse();
-
-		error.setStatus(HttpStatus.NOT_FOUND.value()); 
-		error.setMessage(exception.getMessage());
+	
 	public ResponseEntity<ErrorResponse> handleException(BidNotFoundException e){
 		ErrorResponse error=new ErrorResponse();
 		error.setStatus(HttpStatus.NOT_FOUND.value());
