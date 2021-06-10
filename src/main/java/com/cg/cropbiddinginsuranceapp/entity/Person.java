@@ -18,6 +18,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
@@ -38,23 +39,22 @@ public class Person {
 	// Fields
 
 	@Id
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 
 	@NonNull
-	@NotBlank(message = "Name is mandatory")
+	@Pattern(regexp = "[A-Za-z]+\\s[A-Za-z]+",message="Name is Invalid")
+	@Size(min=3, message = "Name is mandatory")
    private String name;
-	
-
-	
-	
 
 	@NonNull
-  @Size(min = 10, max = 10, message = "Contact Number should have 10 numeric values")
+    @Pattern(regexp = "^[0-9]{10}$",message="Mobile Number is Invalid")
+    @Size(min = 10, max = 10, message = "Contact Number should have 10 numeric values")
+
 	private String contactNumber;
 
 	@NonNull
+	@Pattern(regexp= "^[A-Za-z0-9]+@[a-z]+\\.[a-z]+",message="EmailId is Invalid")
 	@NotBlank(message = "Email is mandatory")
 	private String emailId;
 
@@ -63,25 +63,23 @@ public class Person {
 	private String aadharNumber;
 
 	@NonNull
-	@NotBlank(message = "panNumber is mandatory")
-
-
-	
-
-	
+	@Pattern(regexp="[A-Z]{5}[0-9]{4}[A-Z]{1}", message="Pan Number is Invalid" )
+	@Size(min=10, max=10, message=" Pan number should have 10 character long alpha-numeric value")
 	private String panNumber;
 
 	// HAS-A-Relationship between farmer and address
 	// HAS-A-Relationship between Bidder and address
-
+	
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "HomeNo", referencedColumnName = "houseno")
+	@JoinColumn(name = "HomeNo", referencedColumnName = "id")
 	private Address homeAddress;
 
 	// HAS-A-Relationship between farmer and account
 	// HAS-A-Relationship between Bidder and account
 
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "accountId", referencedColumnName = "accountId")
-	private Account bankDetails;
+	@JoinColumn(name = "accountId", referencedColumnName = "bankId")
+	private Bank bankDetails;
 }

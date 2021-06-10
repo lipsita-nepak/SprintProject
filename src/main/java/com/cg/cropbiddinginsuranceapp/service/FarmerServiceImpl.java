@@ -1,11 +1,14 @@
 package com.cg.cropbiddinginsuranceapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.cg.cropbiddinginsuranceapp.entity.Address;
+import com.cg.cropbiddinginsuranceapp.entity.Bank;
+import com.cg.cropbiddinginsuranceapp.entity.Bidder;
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
 
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
@@ -23,6 +26,9 @@ public class FarmerServiceImpl implements IFarmerService {
 	@Autowired
 	IFarmerRepository farmerRepo;
 	
+	@Autowired
+	ICropDao cropRepo;
+	Optional<Crop> c;
 
 	Optional<Farmer> f;
 
@@ -75,7 +81,7 @@ public class FarmerServiceImpl implements IFarmerService {
 		f.get().setHomeAddress(farmer.getHomeAddress());
 		f.get().setFarmAddress(farmer.getFarmAddress());
 		f.get().setBankDetails(farmer.getBankDetails());
-		f.get().setCrops(farmer.getCrop());
+
 		return farmerRepo.save(f.get()); // returning the updated farmer details
 	}
 
@@ -92,6 +98,69 @@ public class FarmerServiceImpl implements IFarmerService {
 		return f.get(); // if farmer of given id is present then return the deleted farmer details
 	}
 
+	@Override
+	public Farmer addCropForBidding(int farmerId, int cropId) {
+		f = farmerRepo.findById(farmerId);
+		c = cropRepo.findById(cropId);
+		if(!f.isPresent() || !c.isPresent()) {
+			return null;
+		}
+		Farmer farmer= f.get();
+		Crop crop=c.get();
+		farmer.getCrops().add(crop);
+		crop.getFarmersList().add(farmer);
+		return farmerRepo.save(farmer);
+	}
+	@Override
+	public Farmer addCropByFarmerId(int farmerId,Crop crop) {
+		f = farmerRepo.findById(farmerId);
+		if(!f.isPresent()) {
+			return null;
+		}
+		Farmer farmer=f.get();
+		
+		farmer.getCrops().add(crop);
+		return farmerRepo.save(farmer);
+	}
 	
 
+	
+	// Retrieve farmers by name
+	@Override
+	public Farmer retrieveFarmerByName(String name) {
+		log.info(" Calling findByName() of farmerRepository");
+		 f = farmerRepo.findByName(name);// Getting the farmer info by name and storing in f
+		if (!f.isPresent()) {// if farmer is not present of given name then return null
+			return null;
+		}
+		return f.get();// if farmer of given name is present then return the farmer details
+	}
+
+	@Override
+	public Farmer addFarmerAddress(int farmerId, Address address) {
+		f = farmerRepo.findById(farmerId);
+		if(!f.isPresent()) {
+			return null;
+		}
+		Farmer farmer=f.get();
+		
+		farmer.setHomeAddress(address);
+		return farmerRepo.save(farmer);
+	}
+
+	@Override
+	public Farmer addFarmerBankDetails(int farmerId, Bank bank) {
+		f = farmerRepo.findById(farmerId);
+		if(!f.isPresent()) {
+			return null;
+		}
+		Farmer farmer=f.get();
+		
+		farmer.setBankDetails(bank);
+		return farmerRepo.save(farmer);
+	}
+
+	
+
+	
 }

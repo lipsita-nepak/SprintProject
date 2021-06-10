@@ -18,4 +18,6 @@ public interface ICropService {
 	Crop updateById(int id,Crop crop);
 	Crop getByCropName(String cropName);
 	Crop updateStatus(int id,Crop crop);
+	List<Farmer> getFarmerByCropId(int cropId);
+
 }

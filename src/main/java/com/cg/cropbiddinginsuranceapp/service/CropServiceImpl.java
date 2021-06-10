@@ -26,6 +26,9 @@ public class CropServiceImpl implements ICropService {
 	@Autowired
 	ICropDao cdao;
 	
+	@Autowired
+	IFarmerRepository fRepo;
+	
 	
 	/**
 	 * This function is used to create a new crop and redirects to the
@@ -132,4 +135,17 @@ public class CropServiceImpl implements ICropService {
 		return cdao.save(c);
 	}
 
+	@Override
+	public List<Farmer> getFarmerByCropId(int cropId) {
+		Optional<Crop> opt = cdao.findById(cropId);
+		if (!opt.isPresent()) {
+			return null;
+		}
+		
+		List<Farmer> farmer=opt.get().getFarmersList();
+		return farmer;
+	}
+
+
+	
 }

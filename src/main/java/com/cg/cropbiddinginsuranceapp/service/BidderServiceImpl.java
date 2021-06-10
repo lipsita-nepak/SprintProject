@@ -7,8 +7,12 @@ import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cg.cropbiddinginsuranceapp.entity.Address;
+import com.cg.cropbiddinginsuranceapp.entity.Bank;
+import com.cg.cropbiddinginsuranceapp.entity.Bid;
 import com.cg.cropbiddinginsuranceapp.entity.Bidder;
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
+import com.cg.cropbiddinginsuranceapp.entity.Farmer;
 import com.cg.cropbiddinginsuranceapp.repository.IBidderRepository;
 import com.cg.cropbiddinginsuranceapp.repository.ICropDao;
 
@@ -25,6 +29,11 @@ public class BidderServiceImpl implements IBidderService {
 	
 	@Autowired
 	ICropDao cRepo;
+	
+	Optional<Crop> c;
+
+	Optional<Bidder> b;
+	
 	
 	//adding bidder into database
 	@Override
@@ -88,4 +97,57 @@ public class BidderServiceImpl implements IBidderService {
 		logger.info("get all crops");
 		return cRepo.findAll();
 	}
+
+	@Override
+	public Bidder addCropForBidding(int bidderId, int cropId) {
+		b = bidRepo.findById(bidderId);
+		c = cRepo.findById(cropId);
+		if(!b.isPresent() || !c.isPresent()) {
+			return null;
+		}
+		Bidder bidder= b.get();
+		Crop crop=c.get();
+		bidder.getCrops().add(crop);
+		crop.getBiddersList().add(bidder);
+		return bidRepo.save(bidder);
+	}
+	
+	@Override
+	public Bidder addBidByBidderId(int bidderId, Bid bid) {
+		b = bidRepo.findById(bidderId);
+		if(!b.isPresent()) {
+			return null;
+		}
+		Bidder bidder=b.get();
+		
+		bidder.setBid(bid);
+		return bidRepo.save(bidder);
+		
+	}
+
+	@Override
+	public Bidder addBidderAddress(int bidderId, Address address) {
+		b = bidRepo.findById(bidderId);
+		if(!b.isPresent()) {
+			return null;
+		}
+		Bidder bidder=b.get();
+		
+		bidder.setHomeAddress(address);
+		return bidRepo.save(bidder);
+	}
+
+	@Override
+	public Bidder addBidderBankDetails(int bidderId, Bank bank) {
+		b = bidRepo.findById(bidderId);
+		if(!b.isPresent()) {
+			return null;
+		}
+		Bidder bidder=b.get();
+		
+		bidder.setBankDetails(bank);;;
+		return bidRepo.save(bidder);
+	}
+	
+		
 }

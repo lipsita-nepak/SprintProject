@@ -20,14 +20,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Crop {
 
 	@Id
+	@GeneratedValue
 	private int cropId;
 	@NotEmpty(message="crop type should not be empty")
 	private String cropType;
@@ -52,24 +53,12 @@ public class Crop {
 
 	private List<Bidder> biddersList;
 	
-	
-	@JsonBackReference
-	public List<Farmer> getFarmer(){
-		return farmersList;
-	}
-	
-	@JsonBackReference
-	public List<Bidder> getBidder(){
-		return biddersList;
-	}
-	
-
-	
 
 	
   /**
 	 * Required Constructor for the entity class crop
 	 */
+	
 	public Crop(int cropId, String cropType, String cropName, String soilType, double basePricePerQuintal,
 			double quantity) {
 		super();
@@ -86,6 +75,7 @@ public class Crop {
 	/**
 	 * Required Constructor for the entity class crop
 	 */
+	
 	public Crop(int cropId,String cropType,String cropName, String soilType,double basePricePerQuintal, 
 			double quantity, StorageSpace storageSpace, CropVerificationStatus cvStatus) {
 		super();

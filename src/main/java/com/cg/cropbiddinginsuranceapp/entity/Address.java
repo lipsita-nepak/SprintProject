@@ -1,6 +1,8 @@
 package com.cg.cropbiddinginsuranceapp.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -21,6 +23,8 @@ public class Address {
 	// Fields
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
 	@NotBlank(message = "HouseNo is mandatory")
 	private String houseno;
