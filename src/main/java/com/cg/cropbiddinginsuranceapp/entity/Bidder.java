@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.*;
@@ -31,18 +34,16 @@ public class Bidder extends Person {
 	// HAS-A-Relationship between bidder and crop
 		@ManyToMany(cascade=CascadeType.ALL,targetEntity= Crop.class)
 
-		
+		@JsonIgnore
 		@JoinTable(name="bidder_crop",
 					joinColumns= {@JoinColumn(name="userId")},
 					inverseJoinColumns= {@JoinColumn(name="cropId")})
 		private List<Crop> crops=new ArrayList<>();
 		
-
-		@JsonManagedReference
-		public List<Crop> getCrop(){
-			return crops;
-		}
-
+		@JsonIgnore
+		@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+		@JoinColumn(name="bid",referencedColumnName="bidId")
+		private Bid bid;
 	
 	//constructor
 	public Bidder(String traderLicence,String name, String contactNumber, String emailId, String aadharNumber, String panNumber) {

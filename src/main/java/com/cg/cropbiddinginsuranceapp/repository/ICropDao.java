@@ -26,6 +26,9 @@ public interface ICropDao extends JpaRepository<Crop, Integer >{
 	public Crop getCropByName(@Param("n") String cropName);
 	
 	
+	
+	
+	
 }
 
 

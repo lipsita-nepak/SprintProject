@@ -3,6 +3,8 @@ package com.cg.cropbiddinginsuranceapp.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,6 +14,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,19 +36,22 @@ import lombok.ToString;
 
 public class Bid {
 	@Id
-	@NonNull
 	@Min(1)
 	private int bidId;
 	@NonNull
 	@NotEmpty(message = "bid date should not be empty")
 	private String dateOfBidding;
+	
+	@NotNull(message="bidPerQuintal should not be empty")
+	@NonNull
+	private double bidPerQuintal;
+	
+	@Enumerated(EnumType.STRING)
+	@NonNull
+	private BidStatus bidStatus;
 
-	// HAS-A relation between Farmer and crop
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "farmer", referencedColumnName = "userId")
-	private Farmer farmer;
+	
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "crop", referencedColumnName = "cropId")
-	private Crop crop;
+	
+
 }

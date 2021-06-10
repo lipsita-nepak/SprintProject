@@ -140,4 +140,16 @@ public class CropController {
 		logger.info("View All Crops By Name:"+n);
 		return new ResponseEntity<>(cs.getByCropName(n),HttpStatus.OK);
 	}
+	
+	@GetMapping("/crop/farmer/{cropId}")
+	public ResponseEntity<List<Farmer>> getFarmerByCropId(@PathVariable("cropId") int cropId)
+	{
+		List<Farmer> farmer=cs.getFarmerByCropId(cropId);
+		if(farmer==null)
+		{
+			throw new CropNotFoundException("Crop not found with given name: " );
+		}
+		return new ResponseEntity<>(cs.getFarmerByCropId(cropId),HttpStatus.OK);
+	}
+	
 }

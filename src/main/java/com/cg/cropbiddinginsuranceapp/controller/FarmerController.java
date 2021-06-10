@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cg.cropbiddinginsuranceapp.entity.Address;
+import com.cg.cropbiddinginsuranceapp.entity.Bank;
+import com.cg.cropbiddinginsuranceapp.entity.Bidder;
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
 
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
 import com.cg.cropbiddinginsuranceapp.exception.FarmerNotFoundException;
+import com.cg.cropbiddinginsuranceapp.exception.PersonNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IFarmerService;
 
 import lombok.extern.log4j.Log4j2;
@@ -100,5 +104,67 @@ public class FarmerController {
 		// If farmer of given userId is there then it deletes that farmer and displays the deleted farmer dtls
 		return new ResponseEntity<>(farmerService.deleteFarmerById(userId),HttpStatus.OK);
 	}
+	
+	@PostMapping("/farmer/{farmerId}/crop/{cropId}")
+	public ResponseEntity<Farmer> addCropForBidding(@PathVariable("farmerId") int farmerId,@PathVariable("cropId") int cropId,@Valid @RequestBody Crop crop)
+	{
+		Farmer farmer=farmerService.addCropForBidding(farmerId, cropId);
+		if (farmer==null) {
+			
+			throw new FarmerNotFoundException("Farmer not found with given id: " + farmerId);
+		}
+		
+		return new ResponseEntity<>(farmer,HttpStatus.OK);
+	}
+	
+	@PostMapping("/farmer/{farmerId}/crop")
+	public ResponseEntity<Farmer> addCropByFarmerId(@PathVariable("farmerId") int farmerId,@Valid @RequestBody Crop crop)
+	{
+		Farmer farmer=farmerService.addCropByFarmerId(farmerId, crop);
+		if (farmer==null) {
+					
+			throw new FarmerNotFoundException("Farmer not found with given id: " + farmerId);
+		}	
+		return new ResponseEntity<>(farmer,HttpStatus.OK);
+	}
+	
+	// Getting Farmer based on given name
+		@GetMapping("/farmer/farmerName/{name}")
+		public ResponseEntity<Farmer> retrieveFarmerByName(@PathVariable("name") String name) {
+			
+			// If farmer of given name is not there then it throws an Exception
+			if (farmerService.retrieveFarmerByName(name) == null) { 
+				log.error("Cannot display as Farmer not found with name: " + name);
+				throw new FarmerNotFoundException("Farmer not found with given name: " + name);
+			}
+			log.info("Getting Farmer info with name: " + name);
+			
+			// If farmer of given name is there then it displays that farmer dtls
+			return new ResponseEntity<>(farmerService.retrieveFarmerByName(name),HttpStatus.OK);
+		}
+		
+		@PostMapping("/farmer/{farmerId}/address")
+		public ResponseEntity<Farmer> addFarmerAddress(@PathVariable("farmerId") int farmerId,@Valid @RequestBody Address address)
+		{
+			Farmer farmer=farmerService.addFarmerAddress(farmerId, address);
+			if (farmer==null) {
+						
+				throw new FarmerNotFoundException("farmer not found with given id: " + farmerId);
+			}	
+			return new ResponseEntity<>(farmer,HttpStatus.OK);
+		}
+		
+		@PostMapping("/farmer/{farmerId}/bank")
+		public ResponseEntity<Farmer> addFarmerBankDetails(@PathVariable("farmerId") int farmerId,@Valid @RequestBody Bank bank)
+		{
+			Farmer farmer=farmerService.addFarmerBankDetails(farmerId, bank);
+			if (farmer==null) {
+				
+				throw new FarmerNotFoundException("farmer not found with given id: " + farmerId);
+			}	
+			return new ResponseEntity<>(farmer,HttpStatus.OK);
+		}
+
+	
 	
 }

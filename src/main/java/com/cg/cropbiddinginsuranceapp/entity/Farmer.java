@@ -29,25 +29,25 @@ public class Farmer extends Person { // IS-A-Relationship between person and far
 
 	// HAS-A-Relationship between farmer and address
 
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "FarmNo", referencedColumnName = "houseno")
 	private Address farmAddress;
 	
 
 	// HAS-A-Relationship between farmer and crop
+	@JsonIgnore
 	@ManyToMany(cascade=CascadeType.ALL,targetEntity= Crop.class)
-
-	
 	@JoinTable(name="farmer_crop",
 				joinColumns= {@JoinColumn(name="userId")},
 				inverseJoinColumns= {@JoinColumn(name="cropId")})
 	private List<Crop> crops=new ArrayList<>();
 	
 
-	@JsonManagedReference
-	public List<Crop> getCrop(){
-		return crops;
-	}
+	@JsonIgnore
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name="bid",referencedColumnName="bidId")
+	private Bid bid;
 
 
 	

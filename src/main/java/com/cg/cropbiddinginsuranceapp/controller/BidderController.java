@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.cropbiddinginsuranceapp.entity.*;
 import com.cg.cropbiddinginsuranceapp.controller.BidderController;
+import com.cg.cropbiddinginsuranceapp.exception.FarmerNotFoundException;
 import com.cg.cropbiddinginsuranceapp.exception.PersonNotFoundException;
 import com.cg.cropbiddinginsuranceapp.service.IBidderService;
 import javax.validation.Valid;
@@ -84,4 +87,50 @@ public class BidderController {
 		logger.info("get all crops");
 		return bidService.getCropList();
 	}
+	
+	@PostMapping("/bidder/{bidderId}/crop/{cropId}")
+	public ResponseEntity<Bidder> addCropForBidding(@PathVariable("bidderId") int bidderId,@PathVariable("cropId") int cropId,@Valid @RequestBody Crop crop)
+	{
+		Bidder bidder=bidService.addCropForBidding(bidderId, cropId);
+		if (bidder==null) {
+			
+			throw new PersonNotFoundException("Bidder not found with given id: " + bidderId);
+		}
+		
+		return new ResponseEntity<>(bidder,HttpStatus.OK);
+	}
+	
+	@PostMapping("/bidder/{bidderId}/bid")
+	public ResponseEntity<Bidder> addBidByBidderId(@PathVariable("bidderId") int bidderId,@Valid @RequestBody Bid bid)
+	{
+		Bidder bidder=bidService.addBidByBidderId(bidderId, bid);
+		if (bidder==null) {
+					
+			throw new PersonNotFoundException("Person not found with given id: " + bidderId);
+		}	
+		return new ResponseEntity<>(bidder,HttpStatus.OK);
+	}
+	
+	@PostMapping("/bidder/{bidderId}/address")
+	public ResponseEntity<Bidder> addBidderAddress(@PathVariable("bidderId") int bidderId,@Valid @RequestBody Address address)
+	{
+		Bidder bidder=bidService.addBidderAddress(bidderId, address);
+		if (bidder==null) {
+					
+			throw new PersonNotFoundException("Person not found with given id: " + bidderId);
+		}	
+		return new ResponseEntity<>(bidder,HttpStatus.OK);
+	}
+	
+	@PostMapping("/bidder/{bidderId}/bank")
+	public ResponseEntity<Bidder> addBidderBankDetails(@PathVariable("bidderId") int bidderId,@Valid @RequestBody Bank bank)
+	{
+		Bidder bidder=bidService.addBidderBankDetails(bidderId, bank);
+		if (bidder==null) {
+					
+			throw new PersonNotFoundException("Person not found with given id: " + bidderId);
+		}	
+		return new ResponseEntity<>(bidder,HttpStatus.OK);
+	}
+
 }
