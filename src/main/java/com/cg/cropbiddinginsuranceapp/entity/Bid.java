@@ -44,12 +44,13 @@ public class Bid {
 	
 	@NotNull(message="bidPerQuintal should not be empty")
 	@NonNull
-	private double bidPerQuintal;
+	private double bidPricePerQuintal;
 	
 	@Enumerated(EnumType.STRING)
 	@NonNull
-	private BidStatus bidStatus;
-
+	private BidStatus bidStatus=BidStatus.OPEN;
+	
+	
 	
 
 	
