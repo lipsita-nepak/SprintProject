@@ -61,7 +61,7 @@ public class BidServiceImpl implements IBidService {
 
 		bid1.setBidId(bid.getBidId());
 		bid1.setDateOfBidding(bid.getDateOfBidding());
-		bid1.setBidPerQuintal(bid.getBidPerQuintal());
+		bid1.setBidPricePerQuintal(bid.getBidPricePerQuintal());
 		bid1.setBidStatus(bid.getBidStatus());
 		
 		return bidRepo.save(bid1);

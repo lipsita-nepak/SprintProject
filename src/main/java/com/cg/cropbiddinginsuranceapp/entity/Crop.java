@@ -41,7 +41,7 @@ public class Crop {
 	@Enumerated(EnumType.STRING)
 	private StorageSpace storageSpace;
 	@Enumerated(EnumType.STRING)
-	private CropVerificationStatus cvStatus;
+	private CropVerificationStatus cvStatus=CropVerificationStatus.PENDING;
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy="crops",cascade=CascadeType.ALL)
