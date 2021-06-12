@@ -78,9 +78,15 @@ public class FarmerServiceImpl implements IFarmerService {
 		f.get().setEmailId(farmer.getEmailId());
 		f.get().setAadharNumber(farmer.getAadharNumber());
 		f.get().setPanNumber(farmer.getPanNumber());
-		f.get().setHomeAddress(farmer.getHomeAddress());
 		f.get().setFarmAddress(farmer.getFarmAddress());
-		f.get().setBankDetails(farmer.getBankDetails());
+		f.get().setCity(farmer.getCity());	
+		f.get().setState(farmer.getState());
+		f.get().setPincode(farmer.getPincode());
+		f.get().setAccountNumber(farmer.getAccountNumber());
+		f.get().setBankName(farmer.getBankName());
+		f.get().setIfscCode(farmer.getIfscCode());
+		
+		
 
 		return farmerRepo.save(f.get()); // returning the updated farmer details
 	}
@@ -134,30 +140,6 @@ public class FarmerServiceImpl implements IFarmerService {
 			return null;
 		}
 		return f.get();// if farmer of given name is present then return the farmer details
-	}
-
-	@Override
-	public Farmer addFarmerAddress(int farmerId, Address address) {
-		f = farmerRepo.findById(farmerId);
-		if(!f.isPresent()) {
-			return null;
-		}
-		Farmer farmer=f.get();
-		
-		farmer.setHomeAddress(address);
-		return farmerRepo.save(farmer);
-	}
-
-	@Override
-	public Farmer addFarmerBankDetails(int farmerId, Bank bank) {
-		f = farmerRepo.findById(farmerId);
-		if(!f.isPresent()) {
-			return null;
-		}
-		Farmer farmer=f.get();
-		
-		farmer.setBankDetails(bank);
-		return farmerRepo.save(farmer);
 	}
 
 	

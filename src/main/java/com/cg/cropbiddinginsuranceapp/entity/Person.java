@@ -43,7 +43,7 @@ public class Person {
 	private int userId;
 
 	@NonNull
-	@Pattern(regexp = "[A-Za-z]+\\s[A-Za-z]+",message="Name is Invalid")
+	@Pattern(regexp = "[A-Za-z]+\\s[A-Za-z]*",message="Name is Invalid")
 	@Size(min=3, message = "Name is mandatory")
    private String name;
 
@@ -66,20 +66,30 @@ public class Person {
 	@Pattern(regexp="[A-Z]{5}[0-9]{4}[A-Z]{1}", message="Pan Number is Invalid" )
 	@Size(min=10, max=10, message=" Pan number should have 10 character long alpha-numeric value")
 	private String panNumber;
-
-	// HAS-A-Relationship between farmer and address
-	// HAS-A-Relationship between Bidder and address
 	
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "HomeNo", referencedColumnName = "id")
-	private Address homeAddress;
+	@NotBlank(message = "City is mandatory")
+	private String city;
 
-	// HAS-A-Relationship between farmer and account
-	// HAS-A-Relationship between Bidder and account
+	@NotBlank(message = "State is mandatory")
+	private String state;
+  
+	@Size(min = 6, max = 6, message = "Pin Code should have 6 numeric values")
+	private String pincode;
 
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "accountId", referencedColumnName = "bankId")
-	private Bank bankDetails;
+	@NonNull
+	@Size(min=12, max=16, message="Account Number is mandatory")
+	@Pattern(regexp="\\d+")
+	private String accountNumber;
+
+	@NonNull
+	@Pattern(regexp = "[A-Za-z]+",message="Bank Name is Invalid")
+    @Size(min=3,message = "Bank Name is mandatory")
+	private String bankName;
+
+	@NonNull
+	@Pattern(regexp = "^[A-Z]{4}0[A-Z0-9]{6}$",message="IFSC Code is Invalid")
+	@NotBlank(message = "IFSC Code is mandatory")
+    private String ifscCode;
+	
+	
 }

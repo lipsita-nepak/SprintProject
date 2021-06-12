@@ -29,9 +29,7 @@ public interface IFarmerService {
 	
 	public Farmer retrieveFarmerByName(String name);
 	
-	public Farmer addFarmerAddress(int farmerId, Address address);
 	
-	public Farmer addFarmerBankDetails(int farmerId,Bank bank);
 
 	
 

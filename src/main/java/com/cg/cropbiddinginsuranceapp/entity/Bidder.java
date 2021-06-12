@@ -44,14 +44,15 @@ public class Bidder extends Person {
 		@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 		@JoinColumn(name="bid",referencedColumnName="bidId")
 		private Bid bid;
+
+		public Bidder(String traderLicense,@NonNull String name, @NonNull String contactNumber, @NonNull String emailId,
+				@NonNull String aadharNumber, @NonNull String panNumber, @NonNull String accountNumber,
+				@NonNull String bankName, @NonNull String ifscCode) {
+			super(name, contactNumber, emailId, aadharNumber, panNumber, accountNumber, bankName, ifscCode);
+			this.traderLicence=traderLicence;
+		}
 	
 	//constructor
-	public Bidder(String traderLicence,String name, String contactNumber, String emailId, String aadharNumber, String panNumber) {
-		super(name, contactNumber, emailId, aadharNumber, panNumber);
-		this.traderLicence=traderLicence;
-	}
 
-	
-	
 
 }

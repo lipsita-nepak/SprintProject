@@ -29,7 +29,5 @@ public interface IBidderService {
 
 	public Bidder addBidByBidderId(int bidderId, Bid bid);
 	
-	public Bidder addBidderAddress(int bidderId, Address address);
 	
-	public Bidder addBidderBankDetails(int bidderId,Bank bank);
 }

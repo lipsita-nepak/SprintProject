@@ -48,13 +48,17 @@ public class BidderServiceImpl implements IBidderService {
 	public Bidder updateBidder(Bidder bidder) {
 		Bidder bid = bidRepo.findById(bidder.getUserId()).get();
 		bid.setAadharNumber(bidder.getAadharNumber());
-		bid.setBankDetails(bidder.getBankDetails());
 		bid.setContactNumber(bidder.getContactNumber());
 		bid.setEmailId(bidder.getEmailId());
-		bid.setHomeAddress(bidder.getHomeAddress());
 		bid.setName(bidder.getName());
 		bid.setPanNumber(bidder.getPanNumber());
 		bid.setTraderLicence(bidder.getTraderLicence());
+		bid.setCity(bidder.getCity());	
+		bid.setState(bidder.getState());
+		bid.setPincode(bidder.getPincode());
+		bid.setAccountNumber(bidder.getAccountNumber());
+		bid.setBankName(bidder.getBankName());
+		bid.setIfscCode(bidder.getIfscCode());
 		logger.info("update method");
 		return bidRepo.save(bid);
 	}
@@ -125,29 +129,7 @@ public class BidderServiceImpl implements IBidderService {
 		
 	}
 
-	@Override
-	public Bidder addBidderAddress(int bidderId, Address address) {
-		b = bidRepo.findById(bidderId);
-		if(!b.isPresent()) {
-			return null;
-		}
-		Bidder bidder=b.get();
-		
-		bidder.setHomeAddress(address);
-		return bidRepo.save(bidder);
-	}
-
-	@Override
-	public Bidder addBidderBankDetails(int bidderId, Bank bank) {
-		b = bidRepo.findById(bidderId);
-		if(!b.isPresent()) {
-			return null;
-		}
-		Bidder bidder=b.get();
-		
-		bidder.setBankDetails(bank);;;
-		return bidRepo.save(bidder);
-	}
+	
 	
 		
 }
