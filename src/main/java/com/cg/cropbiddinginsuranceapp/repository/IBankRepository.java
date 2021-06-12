@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.cg.cropbiddinginsuranceapp.entity.Bank;
 
 @Repository
-public interface IBankRepository extends JpaRepository<Bank, Long> {
+public interface IBankRepository extends JpaRepository<Bank, Integer> {
 
 }
