@@ -42,7 +42,7 @@ public class BankServiceImpl implements IBankService {
 	// Retrieve bank by id
 
 	@Override
-	public Bank retrieveBankById(long id) {
+	public Bank retrieveBankById(int id) {
 		log.info(" Calling findById() of bankRepository");
 		b = bankRepo.findById(id);// Getting the bank info by id and storing in b
 		if (!b.isPresent()) {// if bank is not present of given id then return null
@@ -54,7 +54,7 @@ public class BankServiceImpl implements IBankService {
 	// Updating the bank details
 
 	@Override
-	public Bank updateBank(long id, Bank bank) {
+	public Bank updateBank(int id, Bank bank) {
 		log.info(" Calling findById() of bankRepository to update");
 		b = bankRepo.findById(id); // Getting the bank info by id and storing in b
 		if (!b.isPresent()) {
@@ -71,7 +71,7 @@ public class BankServiceImpl implements IBankService {
 	// Delete bank by id
 
 	@Override
-	public Bank deleteBankById(long id) {
+	public Bank deleteBankById(int id) {
 		log.info(" Calling findById() of bankRepository to delete");
 		b = bankRepo.findById(id);// Getting the bank info by id and storing in b
 		if (!b.isPresent()) { // if bank is not present of given id then return null

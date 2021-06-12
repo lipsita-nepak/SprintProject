@@ -31,7 +31,7 @@ public class Bank {
 	// Fields
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long bankId;
+	private int bankId;
 	
 	@NonNull
 	@Size(min=12, max=16, message="Account Number is mandatory")

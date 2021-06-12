@@ -44,7 +44,7 @@ public class BankController {
 
 		// Getting Bank based on given bankId
 		@GetMapping("/bank/{id}")
-		public ResponseEntity<Bank> retrieveBankById(@PathVariable("id") long bankId) {
+		public ResponseEntity<Bank> retrieveBankById(@PathVariable("id") int bankId) {
 			
 			// If bank of given bankId is not there then it throws an Exception
 			if (bankService.retrieveBankById(bankId) == null) { 
@@ -61,7 +61,7 @@ public class BankController {
 
 		// Adding a new bank into the database
 		@PostMapping("/bank")
-		public ResponseEntity<Bank> addFarmer(@Valid @RequestBody Bank bank) {
+		public ResponseEntity<Bank> addBank(@Valid @RequestBody Bank bank) {
 			log.info("Adding a new Bank into database");
 			return new ResponseEntity<>(bankService.addBank(bank),HttpStatus.OK);
 		}
@@ -69,8 +69,8 @@ public class BankController {
 		// Update Operation
 
 		// Updating Bank Information based on bankId and data given
-		@PutMapping("/Bank/{id}")
-		public ResponseEntity<Bank> updateBank(@PathVariable("id") long bankId, @Valid @RequestBody Bank bank) {
+		@PutMapping("/bank/{id}")
+		public ResponseEntity<Bank> updateBank(@PathVariable("id") int bankId, @Valid @RequestBody Bank bank) {
 			
 			// If bank of given bankId is not there then it throws an Exception
 			if (bankService.retrieveBankById(bankId) == null) {
@@ -87,7 +87,7 @@ public class BankController {
 
 		// Deleting a Bank of given bankId
 		@DeleteMapping("/bank/{id}")
-		public ResponseEntity<Bank> deleteBank(@PathVariable("id") long bankId) {
+		public ResponseEntity<Bank> deleteBank(@PathVariable("id") int bankId) {
 			
 			// If bank of given bankId is not there then it throws an Exception
 			if (bankService.retrieveBankById(bankId) == null) {
