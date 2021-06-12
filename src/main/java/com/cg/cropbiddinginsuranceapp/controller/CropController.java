@@ -133,10 +133,7 @@ public class CropController {
 	 * and redirects to the crop service
 	 */
 	@GetMapping("/crop/name/{name}")
-	public ResponseEntity<Crop> getCropByName(@PathVariable("name") String n) {
-		if (cs.getByCropName(n) == null) {
-			throw new CropNotFoundException("Crop not found with given name: " + n);
-		}
+	public ResponseEntity<List<Crop>> getCropByName(@PathVariable("name") String n) {
 		logger.info("View All Crops By Name:"+n);
 		return new ResponseEntity<>(cs.getByCropName(n),HttpStatus.OK);
 	}

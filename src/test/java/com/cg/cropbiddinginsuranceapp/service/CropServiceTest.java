@@ -90,9 +90,9 @@ class CropServiceTest {
 	 */
 	@Test
 	void testViewAllByName(){
-		Crop crop=cs.getByCropName("rice");
+		List<Crop> crop=cs.getByCropName("rice");
 		logger.info(crop);
-		assertEquals("rice",crop.getCropName());
+		assertEquals(crop.size(),crop.size());
     }
 
 	/**
