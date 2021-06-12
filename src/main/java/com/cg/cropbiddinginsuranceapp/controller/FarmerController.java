@@ -143,27 +143,7 @@ public class FarmerController {
 			return new ResponseEntity<>(farmerService.retrieveFarmerByName(name),HttpStatus.OK);
 		}
 		
-		@PostMapping("/farmer/{farmerId}/address")
-		public ResponseEntity<Farmer> addFarmerAddress(@PathVariable("farmerId") int farmerId,@Valid @RequestBody Address address)
-		{
-			Farmer farmer=farmerService.addFarmerAddress(farmerId, address);
-			if (farmer==null) {
-						
-				throw new FarmerNotFoundException("farmer not found with given id: " + farmerId);
-			}	
-			return new ResponseEntity<>(farmer,HttpStatus.OK);
-		}
 		
-		@PostMapping("/farmer/{farmerId}/bank")
-		public ResponseEntity<Farmer> addFarmerBankDetails(@PathVariable("farmerId") int farmerId,@Valid @RequestBody Bank bank)
-		{
-			Farmer farmer=farmerService.addFarmerBankDetails(farmerId, bank);
-			if (farmer==null) {
-				
-				throw new FarmerNotFoundException("farmer not found with given id: " + farmerId);
-			}	
-			return new ResponseEntity<>(farmer,HttpStatus.OK);
-		}
 
 	
 	

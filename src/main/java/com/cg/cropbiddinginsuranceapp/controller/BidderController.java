@@ -111,26 +111,6 @@ public class BidderController {
 		return new ResponseEntity<>(bidder,HttpStatus.OK);
 	}
 	
-	@PostMapping("/bidder/{bidderId}/address")
-	public ResponseEntity<Bidder> addBidderAddress(@PathVariable("bidderId") int bidderId,@Valid @RequestBody Address address)
-	{
-		Bidder bidder=bidService.addBidderAddress(bidderId, address);
-		if (bidder==null) {
-					
-			throw new PersonNotFoundException("Person not found with given id: " + bidderId);
-		}	
-		return new ResponseEntity<>(bidder,HttpStatus.OK);
-	}
 	
-	@PostMapping("/bidder/{bidderId}/bank")
-	public ResponseEntity<Bidder> addBidderBankDetails(@PathVariable("bidderId") int bidderId,@Valid @RequestBody Bank bank)
-	{
-		Bidder bidder=bidService.addBidderBankDetails(bidderId, bank);
-		if (bidder==null) {
-					
-			throw new PersonNotFoundException("Person not found with given id: " + bidderId);
-		}	
-		return new ResponseEntity<>(bidder,HttpStatus.OK);
-	}
 
 }

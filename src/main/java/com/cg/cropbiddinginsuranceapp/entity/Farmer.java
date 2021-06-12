@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @Data
@@ -50,12 +51,19 @@ public class Farmer extends Person { // IS-A-Relationship between person and far
 	private Bid bid;
 
 
+	// Constructor
+	public Farmer(@NonNull String name, @NonNull String contactNumber, @NonNull String emailId,
+			@NonNull String aadharNumber, @NonNull String panNumber, @NonNull String accountNumber,
+			@NonNull String bankName, @NonNull String ifscCode) {
+		super(name, contactNumber, emailId, aadharNumber, panNumber, accountNumber, bankName, ifscCode);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	
 
-	// Constructor
+	
 
-	public Farmer(String name, String contactNumber, String emailId, String aadharNumber, String panNumber) {
-		super(name, contactNumber, emailId, aadharNumber, panNumber);
-	}
+	
 	
 }
