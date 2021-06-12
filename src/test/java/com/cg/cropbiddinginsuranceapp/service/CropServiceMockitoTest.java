@@ -76,9 +76,14 @@ class CropServiceMockitoTest {
 	 */
 	@Test
 	void testViewByName() {
-		Crop c=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Mockito.when(cdao.getCropByName("paddy")).thenReturn(c);
-		assertEquals("paddy",c.getCropName());
+		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
+		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
+		List<Crop>l=new ArrayList<>();
+		l.add(c1);
+		l.add(c2);
+		Mockito.when(cdao.findAllByCropName("rice")).thenReturn(l);
+		List<Crop>croplist=cs.getByCropName("rice");
+		assertEquals(2,croplist.size());
 	}
 	
 	/**

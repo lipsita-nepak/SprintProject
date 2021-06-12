@@ -72,7 +72,7 @@ public class UserController {
 	 * This below function is used to create a new user and redirects to the
 	 * user service
 	 */
-	@PostMapping("/users")
+	@PostMapping("/users/add")
 	public UserEntity save(@Valid @RequestBody UserEntity user){
 		logger.info("Creating a User");
 		return regservice.createUser(user);
@@ -84,7 +84,7 @@ public class UserController {
 	 * userid and redirects to the user service
 	 */
 	
-	@PutMapping("/users/{userid}/update")
+	@PutMapping("/users/update/{userid}")
 	public UserEntity updateUser(@PathVariable String userid,@Valid @RequestBody UserEntity user){
 		if (regservice.findUserByUserId(userid)==null) {
 			throw new UserNotFoundException("User not found with this Userid" );

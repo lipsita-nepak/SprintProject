@@ -69,7 +69,7 @@ public class UserEntity {
 	@Email
 	@NotEmpty(message="Please Enter Your Email Id")
 	private String email;
-
+    private String userRole;
 }
 
 

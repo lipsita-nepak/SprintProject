@@ -17,13 +17,13 @@ public interface ICropDao extends JpaRepository<Crop, Integer >{
 	/**
 	 * Custom method to get the crop details by crop name 
 	 */
-	Optional<Crop> findByCropName(String cropName);
+	List<Crop> findAllByCropName(String cropName);
 	
 	/**
 	 * Custom query to get the crop details by crop name
 	 */
-	@Query ("select c from Crop c where c.cropName=:n")
-	public Crop getCropByName(@Param("n") String cropName);
+	/*@Query ("select c from Crop c where c.cropName=:n")
+	public Crop getCropByName(@Param("n") String cropName);*/
 	
 	
 }

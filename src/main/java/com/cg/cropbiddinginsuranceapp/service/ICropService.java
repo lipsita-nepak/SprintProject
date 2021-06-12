@@ -16,6 +16,6 @@ public interface ICropService {
 	Crop retrieveCropById(int id);
 	Crop update(int id,Crop crop);
 	Crop updateById(int id,Crop crop);
-	Crop getByCropName(String cropName);
+	List<Crop> getByCropName(String cropName);
 	Crop updateStatus(int id,Crop crop);
 }

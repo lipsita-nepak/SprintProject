@@ -110,13 +110,9 @@ public class CropServiceImpl implements ICropService {
 	 * crop repository
 	 */
 	@Override
-	public Crop getByCropName(String cropName) {
-		Optional<Crop> opt = cdao.findByCropName(cropName);
-		if (!opt.isPresent()) {
-			return null;
-		}
+	public List<Crop> getByCropName(String cropName) {
 		logger.info("get all by name method");
-		return opt.get();
+		return cdao.findAllByCropName(cropName);
 	}
 	
 	/**
