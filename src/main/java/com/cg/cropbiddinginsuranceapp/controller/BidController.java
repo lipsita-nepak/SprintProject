@@ -80,10 +80,10 @@ public class BidController {
 	 * This below function is used to update a specific values in bid and id as
 	 * parameter and redirects to the bid service
 	 */
-	@PutMapping("/bid/{id}")
-	public Bid putBid(@PathVariable("id") int bidId, Bid bid) {
+	@PutMapping("/bid/update/{id}")
+	public Bid updateBid(@PathVariable("id") int id, @RequestBody Bid bid) {
 		logger.info("update the bid details by id");
-		return bidService.update(bid);
+		return bidService.update(id,bid);
 	}
 
 }

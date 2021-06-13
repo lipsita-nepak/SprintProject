@@ -48,6 +48,7 @@ public class BidServiceImpl implements IBidService {
 		if (!opt.isPresent()) {
 			return null;
 		}
+		bidRepo.deleteById(id);
 		return opt.get();
 	}
 
@@ -56,14 +57,11 @@ public class BidServiceImpl implements IBidService {
 	 * repository
 	 */
 	@Override
-	public Bid update(Bid bid) {
-		Bid bid1 = bidRepo.findById(bid.getBidId()).get();
-
-		bid1.setBidId(bid.getBidId());
+	public Bid update(int id,Bid bid) {
+		Bid bid1 = bidRepo.findById(id).get();
 		bid1.setDateOfBidding(bid.getDateOfBidding());
 		bid1.setBidPricePerQuintal(bid.getBidPricePerQuintal());
 		bid1.setBidStatus(bid.getBidStatus());
-		
 		return bidRepo.save(bid1);
 	}
 

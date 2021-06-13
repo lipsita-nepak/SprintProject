@@ -10,11 +10,11 @@ public interface IBidService {
 
 	Bid findByBidId(int id);
 	List<Bid> findAll();
-
-	Bid update(Bid bid);
-
+	
 	Bid save(Bid bid);
 
 	Bid deleteByBidId(int id);
+	
+	Bid update(int id, Bid bid);
 	
 }
