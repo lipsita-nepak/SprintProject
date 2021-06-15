@@ -15,12 +15,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.cg.cropbiddinginsuranceapp.entity.Account;
-import com.cg.cropbiddinginsuranceapp.entity.Address;
-import com.cg.cropbiddinginsuranceapp.entity.Bank;
+
+
+
 import com.cg.cropbiddinginsuranceapp.entity.Bid;
-import com.cg.cropbiddinginsuranceapp.entity.Crop;
-import com.cg.cropbiddinginsuranceapp.entity.Farmer;
 import com.cg.cropbiddinginsuranceapp.repository.IBidRepository;
 
 @ExtendWith(SpringExtension.class)
@@ -44,27 +42,12 @@ class BidServiceMockitoTest {
 	 * Test case for the method to create all the values
 	 */
 	void testCreateBid() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "213345232111", "LLM121");
-
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		Crop c = new Crop(104, "cash", "paddy", "clayloam", 1800.0, 50.0);
-		Bid bid = new Bid(1001, "2022-05-15");
-
+		
+		Bid bid = new Bid( "2022-05-15",600);
+		bid.setBidId(100);
 		Mockito.when(bidRepo.save(bid)).thenReturn(bid);
 		Bid persistedBid = bidService.save(bid);
-		assertEquals(1001, persistedBid.getBidId());
+		assertEquals(100, persistedBid.getBidId());
 	}
 
 	@Test
@@ -74,27 +57,12 @@ class BidServiceMockitoTest {
 	 * Test case for the method to get the values from the database using id 
 	 */
 	void testFindByBidId() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "213345232111", "LLM121");
+		Bid bid = new Bid( "2022-05-15",600);
+		bid.setBidId(100);
+		Mockito.when(bidRepo.findById(100)).thenReturn(Optional.of(bid));
 
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		Crop c = new Crop(104, "cash", "paddy", "clayloam", 1800.0, 50.0);
-		Bid bid = new Bid(20, "2022-05-15");
-		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
-
-		Bid persistedBid = bidService.findByBidId(20);
-		assertEquals(20, persistedBid.getBidId());
+		Bid persistedBid = bidService.findByBidId(100);
+		assertEquals(100, persistedBid.getBidId());
 	}
 
 	@Test
@@ -103,28 +71,13 @@ class BidServiceMockitoTest {
 	 * Test case for the method to delete the values from the database using id 
 	 */
 	void testDeleteBid() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "213345232111", "LLM121");
-
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		Crop c = new Crop(104, "cash", "paddy", "clayloam", 1800.0, 50.0);
-		Bid bid = new Bid(20, "2022-05-15");
+		Bid bid = new Bid( "2022-05-15",600);
+		bid.setBidId(20);
 
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
 
 		Bid persistedBid = bidService.deleteByBidId(20);
-		assertEquals(20, bid.getBidId());
+		assertEquals(20, persistedBid.getBidId());
 
 	}
 
@@ -136,28 +89,13 @@ class BidServiceMockitoTest {
 	 */
 	void testUpdateBid() {
 
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "213345232111", "LLM121");
-
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		Crop c = new Crop(104, "cash", "rice", "clayloam", 1800.0, 50.0);
-		Bid bid = new Bid(20, "2022-05-15");
+		Bid bid = new Bid( "2022-05-15",600);
+		bid.setBidId(20);
 
 		Mockito.when(bidRepo.findById(20)).thenReturn(Optional.of(bid));
 		Mockito.when(bidRepo.save(bid)).thenReturn(bid);
 
-		Bid persistedBid = bidService.update(bid);
+		Bid persistedBid = bidService.update(20, bid);
 		assertEquals("2022-05-15", persistedBid.getDateOfBidding());
 	}
 
@@ -168,24 +106,10 @@ class BidServiceMockitoTest {
 	 * Test case for the method to get all the values from the database
 	 */
 	void testRetrieveBid() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "213345232111", "LLM121");
-
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		Crop c = new Crop(104, "cash", "paddy", "clayloam", 1800.0, 50.0);
-		List<Bid> bid = bidService.findAll();
-		int size = bid.size();
-		assertEquals(size, bid.size());
+		Bid bid = new Bid( "2022-05-15",600);
+		bid.setBidId(20);
+		List<Bid> bidd = bidService.findAll();
+		int size = bidd.size();
+		assertEquals(size, bidd.size());
 	}
 }

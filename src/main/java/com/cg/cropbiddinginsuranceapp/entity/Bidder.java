@@ -32,9 +32,10 @@ public class Bidder extends Person {
 	private String traderLicence;
 	
 	// HAS-A-Relationship between bidder and crop
+		@JsonIgnore
 		@ManyToMany(cascade=CascadeType.ALL,targetEntity= Crop.class)
 
-		@JsonIgnore
+	
 		@JoinTable(name="bidder_crop",
 					joinColumns= {@JoinColumn(name="userId")},
 					inverseJoinColumns= {@JoinColumn(name="cropId")})
