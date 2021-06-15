@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.cg.cropbiddinginsuranceapp.entity.Address;
-import com.cg.cropbiddinginsuranceapp.entity.Bank;
+
 import com.cg.cropbiddinginsuranceapp.entity.Bidder;
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
