@@ -45,7 +45,6 @@ public class Crop {
 	
 	@JsonIgnore
 	@ManyToMany(mappedBy="crops",cascade=CascadeType.ALL)
-
 	private List<Farmer> farmersList;
 	
 	@JsonIgnore

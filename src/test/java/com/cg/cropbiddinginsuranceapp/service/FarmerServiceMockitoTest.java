@@ -16,9 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.cg.cropbiddinginsuranceapp.entity.Account;
-import com.cg.cropbiddinginsuranceapp.entity.Address;
-import com.cg.cropbiddinginsuranceapp.entity.Bank;
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
 import com.cg.cropbiddinginsuranceapp.entity.Farmer;
 import com.cg.cropbiddinginsuranceapp.repository.IFarmerRepository;
@@ -44,38 +41,18 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testAddFarmer() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLM121");
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLMKL9876L",
+				"123456789076","ICICI","KJOI0654324");
+		farmer.setCity("Mumbai");
+		farmer.setState("Ap");
+		farmer.setPincode("607005");
+		farmer.setUserId(100);
 
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-		
-		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		
-		List<Crop> cropList= new ArrayList<>();
-		cropList.add(c1);
-		cropList.add(c2);
-		farmer.setCrops(cropList);
-		
 		log.info("Testing AddFarmer() inside Mockito");
 
 		Mockito.when(farmerRepo.save(farmer)).thenReturn(farmer);
 
 		Farmer persistedFarmer = farmerService.addFarmer(farmer);
-		
-		
-		assertEquals("1CD21", persistedFarmer.getBankDetails().getBank().getIfscCode());
 		assertEquals("Preeti", persistedFarmer.getName());
 		log.info("Successful result");
 
@@ -85,33 +62,17 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testRetrieveAllFarmers() {
-		Farmer farmer1 = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLM121");
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLMKL9876L",
+				"123456789076","ICICI","KJOI0654324");
+		farmer.setCity("Mumbai");
+		farmer.setState("Ap");
+		farmer.setPincode("607005");
+		farmer.setUserId(100);
 
-		Address homeAddress1 = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress1 = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress1 = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-		
-		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
-
-		Bank bank1 = new Bank(403, "HDFC Bank", "1CD21");
-		bank1.setAddress(bankAddress1);
-
-		Account account1 = new Account(1986452177);
-		account1.setBank(bank1);
-
-		farmer1.setHomeAddress(homeAddress1);
-		farmer1.setFarmAddress(farmAddress1);
-		farmer1.setBankDetails(account1);
-		
-		List<Crop> cropList= new ArrayList<>();
-		cropList.add(c1);
-		cropList.add(c2);
-		farmer1.setCrops(cropList);
 		
 
 		List<Farmer> farmerList = new ArrayList<>();
-		farmerList.add(farmer1);
+		farmerList.add(farmer);
 		log.info("Testing RetrieveAllFarmers() inside Mockito");
 
 		Mockito.when(farmerRepo.findAll()).thenReturn(farmerList);
@@ -128,29 +89,12 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testRetrieveFarmerById() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLM121");
-
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-		
-		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		
-		List<Crop> cropList= new ArrayList<>();
-		cropList.add(c1);
-		cropList.add(c2);
-		farmer.setCrops(cropList); 
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLMKL9876L",
+				"123456789076","ICICI","KJOI0654324");
+		farmer.setCity("Mumbai");
+		farmer.setState("Ap");
+		farmer.setPincode("607005");
+		farmer.setUserId(100);
 		
 		log.info("Testing RetrieveFarmerById() inside Mockito");
 
@@ -168,39 +112,22 @@ class FarmerServiceMockitoTest {
 
 	@Test
 	void testUpdateFarmer() {
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "2133 4523 2111", "LLM121");
-
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-		
-		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		
-		List<Crop> cropList= new ArrayList<>();
-		cropList.add(c1);
-		cropList.add(c2);
-		farmer.setCrops(cropList);
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLMKL9876L",
+				"123456789076","ICICI","KJOI0654324");
+		farmer.setCity("Mumbai");
+		farmer.setState("Ap");
+		farmer.setPincode("607005");
+		farmer.setUserId(100);
 		
 		log.info("Testing UpdateFarmerById() inside Mockito");
 
 
-		Mockito.when(farmerRepo.findById(3)).thenReturn(Optional.of(farmer));
+		Mockito.when(farmerRepo.findById(100)).thenReturn(Optional.of(farmer));
 		Mockito.when(farmerRepo.save(farmer)).thenReturn(farmer);
 
-		Farmer persistedFarmer = farmerService.updateFarmer(3, farmer);
+		Farmer persistedFarmer = farmerService.updateFarmer(100, farmer);
 		
-		assertEquals("preeti11@gmail.com", persistedFarmer.getEmailId());
+		assertEquals("preeti@gmail.com", persistedFarmer.getEmailId());
 		assertEquals("Preeti", persistedFarmer.getName());
 		log.info("Successful result");
 	}
@@ -210,29 +137,12 @@ class FarmerServiceMockitoTest {
 	@Test
 	void testDeleteFarmerById() {
 
-		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti11@gmail.com", "2133 4523 2111", "LLM121");
-
-		Address homeAddress = new Address("103", "G-Nagar", "Noida", "Delhi", "760007");
-		Address farmAddress = new Address("203", "H-Nagar", "Noida", "Delhi", "760008");
-		Address bankAddress = new Address("303", "I-Nagar", "Noida", "Delhi", "760009");
-		
-		Crop c1=new Crop(104, "cash", "paddy", "clayloam", 1800.0,50.0);
-		Crop c2=new Crop(105, "food", "carrot", "clayloam", 1500.0,100.0);
-
-		Bank bank = new Bank(403, "HDFC Bank", "1CD21");
-		bank.setAddress(bankAddress);
-
-		Account account = new Account(1986452177);
-		account.setBank(bank);
-
-		farmer.setHomeAddress(homeAddress);
-		farmer.setFarmAddress(farmAddress);
-		farmer.setBankDetails(account);
-		
-		List<Crop> cropList= new ArrayList<>();
-		cropList.add(c1);
-		cropList.add(c2);
-		farmer.setCrops(cropList);
+		Farmer farmer = new Farmer("Preeti", "6703323213", "preeti@gmail.com", "2133 4523 2111", "LLMKL9876L",
+				"123456789076","ICICI","KJOI0654324");
+		farmer.setCity("Mumbai");
+		farmer.setState("Ap");
+		farmer.setPincode("607005");
+		farmer.setUserId(3);
 		
 		log.info("Testing DeleteFarmerById() inside Mockito ");
 
@@ -241,7 +151,7 @@ class FarmerServiceMockitoTest {
 		Farmer persistedFarmer = farmerService.deleteFarmerById(3);
 		
 
-		assertEquals("preeti11@gmail.com", persistedFarmer.getEmailId());
+		assertEquals("preeti@gmail.com", persistedFarmer.getEmailId());
 		assertEquals("Preeti", persistedFarmer.getName());
 		log.info("Successful result");
 	}

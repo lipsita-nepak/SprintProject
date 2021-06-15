@@ -71,6 +71,33 @@ class BidderServiceTest {
 		
 	}
 	
+	// test for retrieving all Bidders from database
+
+		@Test
+		
+		void testRetrieveAllBidders() {
+			logger.info("Testing RetrieveAllBidders()");
+			List<Bidder> bidders = bidService.retrieveAllBidders();
+
+			int size=bidders.size();
+			assertEquals(size, bidders.size());
+			logger.info("Successful result");
+		}
+
+		// test for retrieving bidder by id
+
+		@Test
+		
+		void testRetrieveBidderById() {
+			logger.info("Testing RetrieveBidderById()");
+			Bidder bidder = bidService.retrieveBidderById(3);
+			
+			
+			assertEquals("abc@gmail.com", bidder.getEmailId());
+			
+			logger.info("Successful result");
+		}
+	
 	
 }
 
