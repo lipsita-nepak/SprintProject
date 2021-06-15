@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.cropbiddinginsuranceapp.entity.Address;
-import com.cg.cropbiddinginsuranceapp.entity.Bank;
 import com.cg.cropbiddinginsuranceapp.entity.Bidder;
 import com.cg.cropbiddinginsuranceapp.entity.Crop;
 

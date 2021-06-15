@@ -36,13 +36,13 @@ public class BidderController {
   //getting bidder using userId
 	
 	@GetMapping("/bidder/{id}")
-	public Bidder retrieveBidderById(@PathVariable("id") int id) {
+	public ResponseEntity<Bidder> retrieveBidderById(@PathVariable("id") int id) {
 		logger.info("Bidder Service Instantiated");
 		if (bidService.retrieveBidderById(id) == null) {
 			throw new PersonNotFoundException("Bidder not found");
 		}
 		logger.info("view bidder by id "+id);
-		return bidService.retrieveBidderById(id);
+		return new ResponseEntity<>(bidService.retrieveBidderById(id),HttpStatus.OK);
 	}
 	
 	//getting all bidders from database
@@ -55,19 +55,19 @@ public class BidderController {
 
 	//adding bidder 
 	@PostMapping("/bidder")
-	public Bidder addBidder(@Valid @RequestBody Bidder bidder) {
+	public ResponseEntity<Bidder> addBidder(@Valid @RequestBody Bidder bidder) {
 		logger.info("New bidder added");
-		return bidService.addBidder(bidder);
+		return new ResponseEntity<>(bidService.addBidder(bidder),HttpStatus.OK);
 	}
 
   //deleting bidder
 	@DeleteMapping("/bidder/{id}")
-	public Bidder deleteBidder(@PathVariable("id") int id) {
+	public ResponseEntity<Bidder> deleteBidder(@PathVariable("id") int id) {
 		if (bidService.retrieveBidderById(id) == null) {
 			throw new PersonNotFoundException("Bidder not found");
 		}
 		logger.info("bidder deleted with id "+id);
-		return bidService.deleteBidder(id);
+		return new ResponseEntity<>(bidService.deleteBidder(id),HttpStatus.OK);
 	}
   
 	//updating the bidder
@@ -88,6 +88,8 @@ public class BidderController {
 		return bidService.getCropList();
 	}
 	
+	//Adding crop for bidding
+	
 	@PostMapping("/bidder/{bidderId}/crop/{cropId}")
 	public ResponseEntity<Bidder> addCropForBidding(@PathVariable("bidderId") int bidderId,@PathVariable("cropId") int cropId,@Valid @RequestBody Crop crop)
 	{
@@ -100,6 +102,7 @@ public class BidderController {
 		return new ResponseEntity<>(bidder,HttpStatus.OK);
 	}
 	
+	//adding bid using bidderId
 	@PostMapping("/bidder/{bidderId}/bid")
 	public ResponseEntity<Bidder> addBidByBidderId(@PathVariable("bidderId") int bidderId,@Valid @RequestBody Bid bid)
 	{
