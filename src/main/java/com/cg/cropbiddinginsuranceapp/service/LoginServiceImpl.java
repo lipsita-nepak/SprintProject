@@ -3,42 +3,51 @@ package com.cg.cropbiddinginsuranceapp.service;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.cg.cropbiddinginsuranceapp.dto.LoginDto;
 import com.cg.cropbiddinginsuranceapp.entity.LoginEntity;
+import com.cg.cropbiddinginsuranceapp.exception.InvalidCredentialsException;
 import com.cg.cropbiddinginsuranceapp.exception.UserNotFoundException;
 import com.cg.cropbiddinginsuranceapp.repository.ILoginRepository;
 
 @Service
 public class LoginServiceImpl implements ILoginService {
-	
+
 	@Autowired
 	ILoginRepository loginRepo;
 	
+	
 
 
 	@Override
-	public String login(LoginEntity user) {
-		Optional<LoginEntity> dbUsr = loginRepo.findById(user.getUserid());
-		String message = null;
-		if (!dbUsr.isPresent() || !dbUsr.get().isLoggedIn()) {
-			user.setLoggedIn(true);
-			loginRepo.save(user);
-			message = "Succesfully logged in " + user.getUserid();
-		} else {
-			message = "Already logged in " + user.getUserid();
+	public LoginDto login(LoginEntity user)throws UserNotFoundException,InvalidCredentialsException {
+		Optional<LoginEntity> dbUsr = loginRepo.findById(user.getUserId());
+		if (!dbUsr.isPresent() ) {
+			throw new UserNotFoundException("User not found with a given id :"+user.getUserId());
 		}
-
-		return message;
+		LoginEntity login = dbUsr.get();
+		LoginDto loginDto=new LoginDto();
+		if(user.getPassword().equals(login.getPassword()) && user.getUserRole().equals(login.getUserRole())) {
+			login.setLoggedIn(true);
+			loginRepo.save(login);	
+			loginDto.setUserId(login.getUserId());
+			loginDto.setUserRole(login.getUserRole());
+			loginDto.setLoggedIn(true);
+		}
+		else {
+			throw new InvalidCredentialsException("UserId or Password is Invalid");
+		}
+		return loginDto;
+		
 	}
-
+	
 	@Override
-	public String logout(String userId) {
-		Optional<LoginEntity> userfield = loginRepo.findById(userId);
+	public String logout(String userid) {
+		Optional<LoginEntity> userfield = loginRepo.findById(userid);
 		LoginEntity dbUsr = null;
 		if (userfield.isPresent()) {
 			dbUsr = userfield.get();
 		}
-		if (dbUsr != null && dbUsr.getUserid().equals(userId) && dbUsr.isLoggedIn()) {
+		if (dbUsr != null && dbUsr.getUserId().equals(userid) && dbUsr.isLoggedIn()) {
 
 			dbUsr.setLoggedIn(false);
 			loginRepo.save(dbUsr);
@@ -47,5 +56,5 @@ public class LoginServiceImpl implements ILoginService {
 		throw new UserNotFoundException("User not logged in");
 	}
 	
-
+	
 }

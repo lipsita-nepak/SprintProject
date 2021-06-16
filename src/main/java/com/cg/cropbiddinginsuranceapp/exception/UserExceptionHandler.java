@@ -21,6 +21,20 @@ public class UserExceptionHandler {
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 
 	}
+	
+	/*
+	 * InvalidCredentialsException
+	 */
+	@ExceptionHandler
+	public ResponseEntity<UserErrorMessage> handleExeption(InvalidCredentialsException exception) {
+		UserErrorMessage error = new UserErrorMessage();
+		error.setStatus(HttpStatus.NOT_FOUND.value());
+		error.setMessage(exception.getMessage());
+		error.setTimestamp(System.currentTimeMillis());
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+
+	}
+	
 /*
  * GenericType Exception Handler
  */
