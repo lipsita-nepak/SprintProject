@@ -13,7 +13,7 @@ public interface IUserService {
 	 * @param userid
 	 * @return UserEntity
 	 */
-	public UserEntity findUserByUserId(String userid);
+	public UserEntity findUserByUserId(String userId);
 /**
  * Retrieves user
  * @return

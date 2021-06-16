@@ -1,7 +1,10 @@
 package com.cg.cropbiddinginsuranceapp.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -29,7 +32,7 @@ public class UserEntity {
 	@NotEmpty(message="Please Enter your UserId")
 	@Pattern(regexp = "[A-Za-z]+",message="UserId is Invalid")
 	@Size(min = 4, message = "Userid is should have atleast 4 character ")
-	private String userid;
+	private String userId;
 	
 	/*
 	 * Password Validation
@@ -40,20 +43,12 @@ public class UserEntity {
 	private String password;
 	
 	/**
-	 * FirstName Validation
+	 * Name Validation
 	 */
-	@NotEmpty(message="Please Enter your FirstName")
-	@Pattern(regexp = "[A-Za-z]+",message="FirstName is Invalid")
-	@Size(min = 2, max = 10, message = "Firstname should have atleast 7 characters not less than 10 characters")
-	private String firstname;
-	
-	/**
-	 * LastName Validation
-	 */
-	@NotEmpty(message="Please Enter your LastName")
-	@Pattern(regexp = "[A-Za-z]+",message="LastName is Invalid")
-	@Size(min = 1, max = 10, message = "Lastnmae should have atleast 7 characters not less than 10 characters")
-	private String lastname;
+	@NotEmpty(message="Please Enter your Name")
+	@Pattern(regexp = "[A-Za-z]+\\s[A-Za-z]*",message="Name is Invalid")
+	@Size(min=3, message = "Name is mandatory")
+    private String name;
 	
 	/**
 	 * MobileNumber Validation
@@ -70,6 +65,10 @@ public class UserEntity {
 	@NotEmpty(message="Please Enter Your Email Id")
 	private String email;
     private String userRole;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="login_fk")
+	private LoginEntity login;
 }
 
 

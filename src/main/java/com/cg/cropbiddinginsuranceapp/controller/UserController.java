@@ -46,13 +46,13 @@ public class UserController {
 	 */
 
 	
-	@GetMapping("/users/{userid}")
-	public UserEntity findUserByUserId(@PathVariable String userid){
-		if (regservice.findUserByUserId(userid) == null) {
+	@GetMapping("/users/{userId}")
+	public UserEntity findUserByUserId(@PathVariable String userId){
+		if (regservice.findUserByUserId(userId) == null) {
 			throw new UserNotFoundException("User not found with this userid ");
 		}
-		logger.info("Getting User by UserId:"+ userid);
-		return regservice.findUserByUserId(userid);
+		logger.info("Getting User by UserId:"+ userId);
+		return regservice.findUserByUserId(userId);
 		
 		
 		 

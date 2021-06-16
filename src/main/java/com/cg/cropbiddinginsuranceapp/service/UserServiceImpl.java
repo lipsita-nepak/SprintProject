@@ -25,8 +25,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserEntity findUserByUserId(String userid) {
-		Optional<UserEntity> optional = regRepo.findById(userid);
+	public UserEntity findUserByUserId(String userId) {
+		Optional<UserEntity> optional = regRepo.findById(userId);
 		if (!optional.isPresent()) {
 			return null;
 		}
@@ -42,11 +42,8 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public UserEntity updateUser(UserEntity user) {
 		UserEntity dbUser = getUser(user);
-		if (isNullOrEmpty(dbUser.getFirstname())) {
-			dbUser.setFirstname(user.getFirstname());
-		}
-		if (isNullOrEmpty(dbUser.getLastname())) {
-			dbUser.setLastname(user.getLastname());
+		if (isNullOrEmpty(dbUser.getName())) {
+			dbUser.setName(user.getName());
 		}
 		if (isNullOrEmpty(dbUser.getEmail())) {
 			dbUser.setEmail(user.getEmail());
@@ -65,7 +62,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	private UserEntity getUser(UserEntity user) {
-		Optional<UserEntity> userfield = regRepo.findById(user.getUserid());
+		Optional<UserEntity> userfield = regRepo.findById(user.getUserId());
 		UserEntity dbUser=null;
 		if (userfield.isPresent()) {
 			dbUser = userfield.get();
